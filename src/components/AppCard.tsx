@@ -6,6 +6,7 @@ import {
   CheckCircle,
   XCircle,
   Lightbulb,
+  Target,
 } from "@phosphor-icons/react";
 
 interface AppCardProps {
@@ -17,6 +18,7 @@ interface AppCardProps {
   pros: string[];
   cons: string[];
   insight: string;
+  weLearn?: string;
 }
 
 export default function AppCard({
@@ -28,6 +30,7 @@ export default function AppCard({
   pros,
   cons,
   insight,
+  weLearn,
 }: AppCardProps) {
   return (
     <div className="border border-neutral-200 rounded-xl p-8 hover:border-black transition-colors">
@@ -95,7 +98,7 @@ export default function AppCard({
         </div>
       </div>
 
-      <div className="bg-neutral-50 rounded-lg p-5">
+      <div className="bg-neutral-50 rounded-lg p-5 mb-4">
         <h5 className="flex items-center gap-2 text-lg font-medium mb-2">
           <Lightbulb size={20} weight="bold" />
           핵심 인사이트
@@ -104,6 +107,18 @@ export default function AppCard({
           {insight}
         </p>
       </div>
+
+      {weLearn && (
+        <div className="bg-black text-white rounded-lg p-5">
+          <h5 className="flex items-center gap-2 text-lg font-medium mb-2">
+            <Target size={20} weight="bold" />
+            우리가 배울 것
+          </h5>
+          <p className="text-base opacity-90 leading-relaxed">
+            {weLearn}
+          </p>
+        </div>
+      )}
     </div>
   );
 }

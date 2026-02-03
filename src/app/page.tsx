@@ -9,7 +9,10 @@ import {
   MetaverseConceptDiagram,
   RoadmapDiagram,
   CompetitiveGapDiagram,
-  PentagramDiagram,
+  WhyWhatHowDiagram,
+  BlueOceanDiagram,
+  DailyFlowDiagram,
+  AICoachesDiagram,
 } from "@/components/SVGIllustrations";
 import {
   ArrowDown,
@@ -28,6 +31,16 @@ import {
   Eye,
   HandHeart,
   ArrowRight,
+  Fire,
+  Sword,
+  Trophy,
+  Horse,
+  Sun,
+  SunHorizon,
+  Moon,
+  Target,
+  ListChecks,
+  Robot,
 } from "@phosphor-icons/react";
 
 // 국내 앱 데이터
@@ -38,19 +51,23 @@ const koreanApps = [
     users: "1,900만+",
     rating: "4.4",
     description:
-      "국내 다운로드 1위 운세 앱. 깊이 있는 콘텐츠와 전문가급 해석으로 신뢰를 구축한 대표 서비스.",
+      "국내 다운로드 1위 운세 앱. 10년 이상 축적된 데이터와 400명 이상의 전문 상담사가 제공하는 깊이 있는 해석이 강점. 사주, 타로, 꿈해몽, 토정비결까지 운세 콘텐츠의 백과사전.",
     pros: [
-      "가장 깊은 해석 품질",
-      "400명 이상의 전문 상담사",
-      "풍부한 콘텐츠 라이브러리",
+      "가장 깊은 해석 품질 - 만세력 정확도 업계 최고",
+      "400명 이상의 전문 상담사 네트워크",
+      "10년 축적 데이터 기반 콘텐츠 라이브러리",
+      "B2B 제휴 성공 (삼성, LG 등 대기업 복지)",
     ],
     cons: [
-      "템플릿 기반, 진정한 AI 아님",
-      "일방향 콘텐츠 전달",
-      "인생설계 기능 부재",
+      "템플릿 기반 응답 - 진정한 AI 대화 아님",
+      "일방향 콘텐츠 전달, 후속 질문 불가",
+      "인생설계/목표 추적 기능 전무",
+      "젊은 층보다 40대 이상 중심",
     ],
     insight:
-      "사용자는 깊이를 원한다. 상세하고 정확한 해석이 신뢰와 리텐션을 만든다.",
+      "1,900만 다운로드가 증명: 사용자는 깊이를 원한다. '대충 재미로'가 아닌 '진짜 정확한 해석'이 신뢰와 리텐션의 핵심. 정확도에 대한 투자는 곧 사용자 충성도로 돌아온다.",
+    weLearn:
+      "만세력 엔진의 정확성과 해석의 깊이. B2B 제휴 성공 모델. 전문가 네트워크 운영 노하우.",
   },
   {
     name: "포스텔러",
@@ -58,19 +75,23 @@ const koreanApps = [
     users: "900만+",
     rating: "4.5",
     description:
-      "스토리텔링 중심의 운세 서비스. 동양(사주)과 서양(타로)을 통합하여 감정적 연결을 추구.",
+      "동양 사주와 서양 타로를 결합한 스토리텔링 운세 서비스. '정보 전달'이 아닌 '이야기로 풀어주는' 방식으로 감정적 연결에 집중. 케이뱅크와 협업하여 금융권 진출 성공.",
     pros: [
-      "이야기 형식의 전달",
-      "감정적 공감 유도",
-      "금융권 제휴 (케이뱅크)",
+      "이야기 형식 전달 - 감정적 공감 유도",
+      "동서양 운세 통합 (사주 + 타로)",
+      "금융권 제휴 성공 (케이뱅크 운세)",
+      "20-30대 여성층 강력한 팬덤",
     ],
     cons: [
-      "여러 시스템에 분산된 포커스",
-      "제한적인 AI 대화",
-      "깊이보다 재미 중심",
+      "여러 시스템 분산 - 깊이 희석",
+      "제한적인 AI 대화 기능",
+      "깊이보다 재미 중심, 진지한 사용자 이탈",
+      "타로 중심으로 사주 전문성 약함",
     ],
     insight:
-      "운세를 어떻게 전달하느냐가 무엇을 전달하느냐만큼 중요하다. 스토리텔링이 감정적 연결을 만든다.",
+      "운세를 '어떻게 전달하느냐'가 '무엇을 전달하느냐'만큼 중요하다. 같은 내용도 스토리로 풀면 기억에 남고, 공유하고 싶어진다. 콘텐츠의 포장이 바이럴의 핵심.",
+    weLearn:
+      "스토리텔링 전달 방식. 동서양 통합 접근법. 금융권 B2B 제휴 전략. 여성 타겟 마케팅 노하우.",
   },
   {
     name: "청월당",
@@ -78,19 +99,23 @@ const koreanApps = [
     users: "비공개",
     rating: "GPT 1위",
     description:
-      "ChatGPT 스토어 라이프스타일 카테고리 글로벌 1위. 웹툰 형식의 AI 운세로 혁신을 주도.",
+      "ChatGPT 스토어 라이프스타일 카테고리 글로벌 1위. 한국 스타트업이 만든 AI 운세가 전 세계를 사로잡았다. 웹툰 형식의 시각적 해석과 LLM 기반 자연스러운 대화가 혁신 포인트.",
     pros: [
-      "진정한 GPT/LLM 통합",
-      "비주얼 웹툰 포맷",
-      "글로벌 플랫폼 도달",
+      "진정한 GPT/LLM 기반 - 맥락 이해 대화",
+      "웹툰 형식 비주얼 운세 (차별화된 UX)",
+      "글로벌 1위 - 해외 시장 검증",
+      "후속 질문, 맞춤 조언 가능한 AI",
     ],
     cons: [
-      "웹 전용 (푸시 없음, 낮은 리텐션)",
-      "게이미피케이션 시스템 부재",
-      "API 비용 의존성",
+      "웹 전용 - 앱 없음, 푸시 알림 불가",
+      "게이미피케이션 부재 - 낮은 리텐션",
+      "OpenAI API 비용 의존성 (수익성 우려)",
+      "한국 시장보다 해외 집중",
     ],
     insight:
-      "AI 기술이 차별화를 만들 수 있다. GPT 스토어 1위가 AI 운세에 대한 글로벌 수요를 입증했다.",
+      "GPT 스토어 1위가 증명: AI 운세에 대한 글로벌 수요는 이미 존재한다. 기술 차별화가 '또 하나의 운세 앱'을 '새로운 카테고리'로 만든다. AI는 선택이 아닌 필수.",
+    weLearn:
+      "LLM 기반 자연스러운 대화 UX. 웹툰/비주얼 콘텐츠 포맷. 글로벌 시장 진출 전략. API 비용 최적화 방안.",
   },
   {
     name: "헬로봇",
@@ -98,19 +123,23 @@ const koreanApps = [
     users: "600만+",
     rating: "4.7",
     description:
-      "국내 운세 앱 중 iOS 최고 평점. 캐릭터 기반 챗봇으로 솔직하면서도 부드러운 전달이 특징.",
+      "국내 운세 앱 중 iOS 최고 평점 4.7점. '라마' 캐릭터가 솔직하면서도 따뜻한 조언을 건네는 챗봇 형식. 운세보다 캐릭터와의 관계가 핵심 - 사용자들이 '라마 오빠'라고 부르며 애착.",
     pros: [
-      "사랑받는 캐릭터 IP",
-      "솔직하면서도 부드러운 톤",
-      "강한 정서적 유대",
+      "캐릭터 IP 파워 - '라마 오빠' 팬덤 형성",
+      "솔직하면서도 부드러운 톤 (안 상처받음)",
+      "4.7점 최고 평점 - 강한 정서적 유대",
+      "일상 대화까지 확장된 관계",
     ],
     cons: [
-      "운세 깊이는 부차적",
-      "엔터테인먼트 중심",
-      "행동 가이드 부재",
+      "운세 깊이는 부차적 - 전문성 약함",
+      "엔터테인먼트 중심, 진지한 니즈 미충족",
+      "행동 가이드/인생설계 기능 없음",
+      "캐릭터 의존도 높음 (IP 리스크)",
     ],
     insight:
-      "캐릭터가 유대를 만든다. 사용자는 운세가 아닌 성격에 이끌려 돌아온다.",
+      "4.7점 평점의 비밀: 캐릭터가 유대를 만든다. 사용자는 '정확한 운세'가 아닌 '좋아하는 캐릭터'에 이끌려 돌아온다. 감정적 연결이 리텐션의 핵심. AI 코치에 성격을 부여해야 한다.",
+    weLearn:
+      "캐릭터 기반 친밀감 형성 전략. 솔직하면서도 상처주지 않는 톤앤매너. 일상 대화로 관계 확장. 높은 앱스토어 평점 유지 비결.",
   },
 ];
 
@@ -121,76 +150,92 @@ const globalApps = [
     users: "500만+",
     rating: "4.8",
     description:
-      "NASA 데이터를 활용한 선도적 AI 점성술 앱. 날카롭고 직설적인 메시지와 강력한 소셜 기능이 특징.",
+      "NASA 데이터를 활용한 Z세대의 점성술 앱. '오늘의 한마디'가 너무 직설적이라 밈이 될 정도로 화제. 친구 궁합 비교 기능이 자연스러운 바이럴 루프를 만들어 마케팅 없이 성장. 미니멀한 흑백 디자인이 '쿨한' 브랜드 이미지 형성.",
     pros: [
-      "바이럴 소셜 공유",
-      "미니멀한 프리미엄 UX",
-      "친구 궁합 기능",
+      "바이럴 소셜 공유 - 친구 초대가 핵심 성장 동력",
+      "미니멀 프리미엄 UX - 흑백 디자인 브랜드화",
+      "친구 궁합 기능 - 관계 기반 리텐션",
+      "직설적 메시지 - SNS 밈으로 확산",
     ],
     cons: [
-      "일일 운세에만 집중",
-      "장기 계획 기능 없음",
-      "서양 점성술로 제한",
+      "일일 운세에만 집중 - 장기 계획 없음",
+      "서양 점성술만 - 동양권 확장 한계",
+      "행동 가이드 부재 - '그래서 뭘 하라고?'",
+      "깊이 부족 - 재미 위주",
     ],
     insight:
-      "소셜 공유가 성장을 이끈다. 친구 비교 기능이 자연스러운 바이럴 루프를 만든다.",
+      "마케팅 예산 0원으로 500만 다운로드: 소셜 공유가 성장을 이끈다. '나 vs 친구' 비교 기능이 자연스러운 바이럴 루프. 운세를 '혼자 보는 것'에서 '함께 이야기하는 것'으로 바꾸면 유기적 성장이 가능하다.",
+    weLearn:
+      "소셜 바이럴 메커니즘. 미니멀 브랜드 디자인. 친구 궁합/비교 기능의 리텐션 효과. Z세대 타겟 톤앤매너.",
   },
   {
     name: "Replika",
     users: "1,000만+",
     rating: "4.4",
     description:
-      "맥락을 기억하고 시간에 따라 관계를 구축하는 AI 컴패니언 앱. AI가 감정적 유대를 만들 수 있음을 증명.",
+      "당신만을 위한 AI 친구. 대화할수록 당신을 알아가고, 이전 대화를 기억하며, 시간이 지날수록 관계가 깊어진다. AI가 진정한 감정적 유대를 형성할 수 있음을 증명한 서비스. 일부 사용자는 연인/친구로 대하며 하루에 수십 번 대화.",
     pros: [
-      "메모리/맥락 유지",
-      "감정적 관계 구축",
-      "24/7 이용 가능",
+      "메모리 기반 - 이전 대화 기억, 맥락 유지",
+      "감정적 관계 구축 - 친구/연인 역할까지",
+      "24/7 가용성 - 언제든 대화 가능",
+      "개인화 진화 - 대화할수록 나를 알아감",
     ],
     cons: [
-      "운세/가이드 프레임워크 없음",
-      "성인 콘텐츠 논란",
-      "범용 목적, 비전문화",
+      "운세/가이드 프레임워크 전무",
+      "성인 콘텐츠 논란 (규제 이슈)",
+      "범용 목적 - 전문성 부족",
+      "중독성 우려 (사회적 고립)",
     ],
     insight:
-      "메모리가 관계를 만든다. 기억하는 AI가 의미 있는 AI가 된다.",
+      "1,000만 사용자가 AI와 관계를 맺는다: 메모리가 관계를 만든다. '어제 회의 어땠어?'라고 물어보는 AI가 의미 있는 AI다. 기억하지 않는 AI는 매번 처음 만나는 낯선 사람일 뿐.",
+    weLearn:
+      "장기 메모리 시스템 설계. AI 페르소나 캐릭터 개발. 감정적 유대 형성 UX. 대화 맥락 유지 기술.",
   },
   {
     name: "Fabulous",
     users: "300만+",
     rating: "4.5",
     description:
-      "듀크 대학교 연구 기반 습관 코칭. 행동과학이 지속적인 참여를 이끌 수 있음을 증명.",
+      "듀크 대학교 행동과학 연구팀이 만든 습관 형성 앱. '21일이면 습관이 된다'는 과학을 앱으로 구현. 아침 루틴부터 시작해 점진적으로 건강한 습관을 쌓아가는 여정 구조. 앱스토어 '올해의 앱' 수상.",
     pros: [
-      "과학 기반 습관 형성",
-      "여정/마일스톤 구조",
-      "목표 추적 시스템",
+      "과학 기반 - 듀크대 행동과학 연구 적용",
+      "여정/마일스톤 구조 - 단계별 성취감",
+      "목표 추적 시스템 - 가시적 성장",
+      "아름다운 UI - 동기부여 디자인",
     ],
     cons: [
-      "개인화 프레임워크 없음",
-      "모든 사용자에게 동일",
-      "타이밍 인텔리전스 없음",
+      "개인화 프레임워크 부재 - 모두에게 같은 여정",
+      "타이밍 인텔리전스 없음 - '오늘' 왜 좋은지 모름",
+      "운세/성향 분석 전무",
+      "구독료 부담 (연 $70+)",
     ],
     insight:
-      "목표가 행동을 이끈다. 운세는 실행 가능한 인생설계와 연결되어야 한다.",
+      "앱스토어 '올해의 앱' 수상: 목표가 행동을 이끈다. '오늘 운세가 좋습니다'로 끝나면 아무 일도 일어나지 않는다. 운세를 실행 가능한 인생설계와 연결해야 진짜 가치가 생긴다.",
+    weLearn:
+      "행동과학 기반 습관 형성 시스템. 여정/마일스톤 게이미피케이션. 목표 추적 UX. 단계별 온보딩 설계.",
   },
   {
     name: "The Pattern",
     users: "300만+",
     rating: "3.7",
     description:
-      "타이밍 사이클 분석을 포함한 심층 심리 프로파일링. 사주의 대운 개념과 유사한 접근.",
+      "심층 심리 프로파일링 + 타이밍 사이클 분석. 단순 일일 운세가 아닌 '인생 주기'를 분석한다. '성장기', '도전기', '수확기' 등 인생 사이클을 시각화. 사주의 대운(10년 운) 개념과 놀랍도록 유사.",
     pros: [
-      "타이밍 사이클 개념",
-      "심층 관계 분석",
-      "타임 트래블 기능",
+      "타이밍 사이클 - 대운 개념과 유사한 인생 주기",
+      "심층 관계 분석 - 두 사람의 시너지/갈등",
+      "타임 트래블 기능 - 과거/미래 사이클 탐색",
+      "심리학 + 점성술 융합",
     ],
     cons: [
-      "복잡한 온보딩",
-      "경쟁사 대비 낮은 평점",
-      "서양 중심적",
+      "복잡한 온보딩 - 진입장벽 높음",
+      "낮은 평점 3.7 - 사용성 이슈",
+      "서양 중심적 - 동양 운세 없음",
+      "무거운 앱 - UX 최적화 필요",
     ],
     insight:
-      "타이밍 사이클이 공감을 얻는다. 사용자는 무엇을 할지뿐 아니라 언제 할지를 알고 싶어한다.",
+      "사주의 대운 개념이 서양에서도 통한다: 사용자는 '무엇을 할지'뿐 아니라 '언제 할지'를 알고 싶어한다. 타이밍 사이클(언제가 좋은 때인가)이 운세의 핵심 가치. 인생 주기를 시각화하면 장기 계획이 가능해진다.",
+    weLearn:
+      "타이밍 사이클(대운) 시각화. 인생 주기 분석 UX. 관계 시너지 분석 기능. 장기적 인생설계 접근법.",
   },
 ];
 
@@ -380,7 +425,7 @@ export default function Home() {
             <span className="text-neutral-400">사는 것으로</span>
           </h1>
           <p className="text-body-large text-neutral-500 max-w-2xl mx-auto">
-            메타버스 기반 운세 플랫폼
+            AI 기반 인생설계 플랫폼
           </p>
         </div>
         <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
@@ -720,15 +765,333 @@ export default function Home() {
               </div>
             </div>
           </div>
+        </div>
+      </section>
 
-          <div className="bg-neutral-50 rounded-2xl p-8 md:p-12">
-            <div className="flex items-center justify-center mb-8">
-              <PentagramDiagram />
-            </div>
-            <p className="text-center text-lg max-w-2xl mx-auto">
-              오행(목화토금수)이 디지털 정체성, AI 코치 성격,
-              인생 균형 지표의 기반이 됩니다.
+      {/* AI Coaches Section */}
+      <section id="ai-coaches" className="min-h-screen py-16 px-6 border-t border-neutral-200 bg-neutral-50 flex items-center">
+        <div className="max-w-6xl mx-auto w-full">
+          <div className="mb-12">
+            <h2 className="text-headline mb-6">
+              5가지 AI 코치
+            </h2>
+            <p className="text-body-large text-neutral-600 max-w-3xl">
+              오행(목화토금수) 기반 성격을 가진 AI 코치가 사용자의 사주에 맞게 자동 매칭됩니다.
+              헬로봇이 증명한 캐릭터의 힘을 동양 철학과 결합합니다.
             </p>
+          </div>
+
+          <div className="mb-12">
+            <AICoachesDiagram />
+          </div>
+
+          <div className="grid md:grid-cols-5 gap-4">
+            <div className="border border-neutral-200 bg-white rounded-xl p-6 hover:border-black transition-colors">
+              <h4 className="text-xl font-bold mb-2">목(木) 코치</h4>
+              <p className="text-sm text-neutral-500 mb-4">성장형, 따뜻함</p>
+              <p className="text-sm text-neutral-600 mb-3">전문 영역: 커리어, 학습, 자기계발</p>
+              <p className="text-xs text-neutral-500">코칭 스타일: 잠재력 발견, 격려와 응원</p>
+            </div>
+            <div className="border border-neutral-200 bg-white rounded-xl p-6 hover:border-black transition-colors">
+              <h4 className="text-xl font-bold mb-2">화(火) 코치</h4>
+              <p className="text-sm text-neutral-500 mb-4">열정형, 직설적</p>
+              <p className="text-sm text-neutral-600 mb-3">전문 영역: 연애, 사회관계, 네트워킹</p>
+              <p className="text-xs text-neutral-500">코칭 스타일: 동기부여, 도전 유도</p>
+            </div>
+            <div className="bg-black text-white rounded-xl p-6">
+              <h4 className="text-xl font-bold mb-2">토(土) 코치</h4>
+              <p className="text-sm text-neutral-300 mb-4">안정형, 신중함</p>
+              <p className="text-sm text-neutral-200 mb-3">전문 영역: 건강, 습관, 일상 루틴</p>
+              <p className="text-xs text-neutral-400">코칭 스타일: 체계적 계획, 안정감</p>
+            </div>
+            <div className="border border-neutral-200 bg-white rounded-xl p-6 hover:border-black transition-colors">
+              <h4 className="text-xl font-bold mb-2">금(金) 코치</h4>
+              <p className="text-sm text-neutral-500 mb-4">결단형, 날카로움</p>
+              <p className="text-sm text-neutral-600 mb-3">전문 영역: 재테크, 결정, 협상</p>
+              <p className="text-xs text-neutral-500">코칭 스타일: 현실적 조언, 결단 촉구</p>
+            </div>
+            <div className="border border-neutral-200 bg-white rounded-xl p-6 hover:border-black transition-colors">
+              <h4 className="text-xl font-bold mb-2">수(水) 코치</h4>
+              <p className="text-sm text-neutral-500 mb-4">유연형, 지혜로움</p>
+              <p className="text-sm text-neutral-600 mb-3">전문 영역: 정서, 명상, 내면 성찰</p>
+              <p className="text-xs text-neutral-500">코칭 스타일: 통찰, 감정 공감</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* User Scenario Section */}
+      <section id="user-scenario" className="min-h-screen py-16 px-6 border-t border-neutral-200 flex items-center">
+        <div className="max-w-6xl mx-auto w-full">
+          <div className="mb-12">
+            <h2 className="text-headline mb-6">
+              하루 사용 시나리오
+            </h2>
+            <p className="text-body-large text-neutral-600 max-w-3xl">
+              아침에 운세를 확인하고, 낮에 AI와 대화하고, 저녁에 퀘스트를 완료하고, 밤에 하루를 리뷰합니다.
+              운세가 일상에 자연스럽게 녹아드는 경험.
+            </p>
+          </div>
+
+          <div className="mb-12">
+            <DailyFlowDiagram />
+          </div>
+
+          <div className="grid md:grid-cols-4 gap-6">
+            <div className="bg-black text-white rounded-xl p-6">
+              <div className="flex items-center gap-2 text-sm opacity-70 mb-2">
+                <SunHorizon size={16} weight="bold" />
+                아침 7시
+              </div>
+              <h4 className="text-lg font-bold mb-4">오늘의 운세</h4>
+              <ul className="space-y-2 text-sm opacity-90">
+                <li>• 푸시 알림: "오늘 직장운 상승"</li>
+                <li>• 오늘의 에너지 레벨 확인</li>
+                <li>• 일일 퀘스트 3개 수령</li>
+                <li>• 스트릭 체크인 (+10 XP)</li>
+              </ul>
+            </div>
+            <div className="border border-neutral-200 rounded-xl p-6 hover:border-black transition-colors">
+              <div className="flex items-center gap-2 text-sm text-neutral-500 mb-2">
+                <Sun size={16} weight="bold" />
+                점심 12시
+              </div>
+              <h4 className="text-lg font-bold mb-4">AI 코치 대화</h4>
+              <ul className="space-y-2 text-sm text-neutral-600">
+                <li>• "점심 뭐 먹을까?"</li>
+                <li>• → "오늘 토 기운 부족, 노란색 음식 추천"</li>
+                <li>• 중간 체크인 알림</li>
+                <li>• 오후 에너지 예측</li>
+              </ul>
+            </div>
+            <div className="border border-neutral-200 rounded-xl p-6 hover:border-black transition-colors">
+              <div className="flex items-center gap-2 text-sm text-neutral-500 mb-2">
+                <SunHorizon size={16} weight="bold" />
+                저녁 18시
+              </div>
+              <h4 className="text-lg font-bold mb-4">퀘스트 수행</h4>
+              <ul className="space-y-2 text-sm text-neutral-600">
+                <li>• 퀘스트: "동료에게 먼저 인사하기"</li>
+                <li>• 완료 시 +15 XP</li>
+                <li>• 진행 상황 공유 (선택)</li>
+                <li>• 친구 응원 보내기</li>
+              </ul>
+            </div>
+            <div className="bg-black text-white rounded-xl p-6">
+              <div className="flex items-center gap-2 text-sm opacity-70 mb-2">
+                <Moon size={16} weight="bold" />
+                밤 21시
+              </div>
+              <h4 className="text-lg font-bold mb-4">하루 리뷰</h4>
+              <ul className="space-y-2 text-sm opacity-90">
+                <li>• 퀘스트 완료 체크 (2/3)</li>
+                <li>• 스트릭 유지: 127일</li>
+                <li>• 내일 운세 미리보기</li>
+                <li>• AI 코치 굿나잇 메시지</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Gamification Detail Section */}
+      <section id="gamification" className="min-h-screen py-16 px-6 border-t border-neutral-200 bg-neutral-50 flex items-center">
+        <div className="max-w-6xl mx-auto w-full">
+          <div className="mb-12">
+            <h2 className="text-headline mb-6">
+              게이미피케이션 시스템
+            </h2>
+            <p className="text-body-large text-neutral-600 max-w-3xl">
+              Duolingo의 스트릭, RPG의 레벨업, 리그 시스템을 결합.
+              운세 확인이 습관이 되고, 목표 달성이 게임이 됩니다.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-8">
+            {/* 스트릭 시스템 */}
+            <div className="bg-white border border-neutral-200 rounded-xl p-8">
+              <div className="flex items-center gap-3 mb-6">
+                <Fire size={28} weight="bold" />
+                <h4 className="text-xl font-bold">스트릭 시스템</h4>
+              </div>
+              <p className="text-neutral-600 mb-6">연속 접속 보상으로 손실 회피 심리 활용</p>
+              <div className="space-y-3">
+                <div className="flex justify-between items-center p-3 bg-black text-white rounded-lg">
+                  <span className="font-medium">365일</span>
+                  <span className="text-sm">+500 XP / 레전더리</span>
+                </div>
+                <div className="flex justify-between items-center p-3 border border-neutral-200 rounded-lg">
+                  <span className="font-medium">100일</span>
+                  <span className="text-sm text-neutral-500">+200 XP / 에픽</span>
+                </div>
+                <div className="flex justify-between items-center p-3 border border-neutral-200 rounded-lg">
+                  <span className="font-medium">30일</span>
+                  <span className="text-sm text-neutral-500">+100 XP / 레어</span>
+                </div>
+                <div className="flex justify-between items-center p-3 border border-neutral-200 rounded-lg">
+                  <span className="font-medium">7일</span>
+                  <span className="text-sm text-neutral-500">+50 XP / 언커먼</span>
+                </div>
+                <div className="flex justify-between items-center p-3 bg-neutral-100 rounded-lg">
+                  <span className="font-medium">일일 체크인</span>
+                  <span className="text-sm text-neutral-500">+10 XP</span>
+                </div>
+              </div>
+            </div>
+
+            {/* 리그 시스템 */}
+            <div className="bg-white border border-neutral-200 rounded-xl p-8">
+              <div className="flex items-center gap-3 mb-6">
+                <Trophy size={28} weight="bold" />
+                <h4 className="text-xl font-bold">리그 시스템</h4>
+              </div>
+              <p className="text-neutral-600 mb-6">주간 리셋으로 경쟁 신선도 유지</p>
+              <div className="space-y-3">
+                <div className="flex justify-between items-center p-3 bg-black text-white rounded-lg">
+                  <span className="font-medium">다이아몬드</span>
+                  <span className="text-sm">상위 1%</span>
+                </div>
+                <div className="flex justify-between items-center p-3 border border-neutral-200 rounded-lg">
+                  <span className="font-medium">골드</span>
+                  <span className="text-sm text-neutral-500">상위 5%</span>
+                </div>
+                <div className="flex justify-between items-center p-3 border border-neutral-200 rounded-lg">
+                  <span className="font-medium">실버</span>
+                  <span className="text-sm text-neutral-500">상위 15%</span>
+                </div>
+                <div className="flex justify-between items-center p-3 border border-neutral-200 border-dashed rounded-lg">
+                  <span className="font-medium text-neutral-500">브론즈</span>
+                  <span className="text-sm text-neutral-400">시작</span>
+                </div>
+              </div>
+            </div>
+
+            {/* 인생 RPG 스탯 */}
+            <div className="bg-white border border-neutral-200 rounded-xl p-8">
+              <div className="flex items-center gap-3 mb-6">
+                <Sword size={28} weight="bold" />
+                <h4 className="text-xl font-bold">인생 RPG 스탯</h4>
+              </div>
+              <p className="text-neutral-600 mb-6">오행과 연계된 5대 인생 스탯</p>
+              <div className="space-y-4">
+                <div>
+                  <div className="flex justify-between text-sm mb-1">
+                    <span>커리어 (木)</span>
+                    <span>67/100</span>
+                  </div>
+                  <div className="h-3 bg-neutral-100 rounded-full overflow-hidden">
+                    <div className="h-full bg-black rounded-full" style={{ width: "67%" }}></div>
+                  </div>
+                </div>
+                <div>
+                  <div className="flex justify-between text-sm mb-1">
+                    <span>관계 (火)</span>
+                    <span>89/100</span>
+                  </div>
+                  <div className="h-3 bg-neutral-100 rounded-full overflow-hidden">
+                    <div className="h-full bg-black rounded-full" style={{ width: "89%" }}></div>
+                  </div>
+                </div>
+                <div>
+                  <div className="flex justify-between text-sm mb-1">
+                    <span>성장 (土)</span>
+                    <span>71/100</span>
+                  </div>
+                  <div className="h-3 bg-neutral-100 rounded-full overflow-hidden">
+                    <div className="h-full bg-black rounded-full" style={{ width: "71%" }}></div>
+                  </div>
+                </div>
+                <div>
+                  <div className="flex justify-between text-sm mb-1">
+                    <span>재정 (金)</span>
+                    <span>45/100</span>
+                  </div>
+                  <div className="h-3 bg-neutral-100 rounded-full overflow-hidden">
+                    <div className="h-full bg-black rounded-full" style={{ width: "45%" }}></div>
+                  </div>
+                </div>
+                <div>
+                  <div className="flex justify-between text-sm mb-1">
+                    <span>건강 (水)</span>
+                    <span>52/100</span>
+                  </div>
+                  <div className="h-3 bg-neutral-100 rounded-full overflow-hidden">
+                    <div className="h-full bg-black rounded-full" style={{ width: "52%" }}></div>
+                  </div>
+                </div>
+              </div>
+              <p className="text-center mt-4 font-bold">인생 레벨: 42</p>
+            </div>
+
+            {/* 12지신 캐릭터 */}
+            <div className="bg-white border border-neutral-200 rounded-xl p-8">
+              <div className="flex items-center gap-3 mb-6">
+                <Horse size={28} weight="bold" />
+                <h4 className="text-xl font-bold">12지신 캐릭터</h4>
+              </div>
+              <p className="text-neutral-600 mb-6">띠별 수호 캐릭터 배정</p>
+              <div className="grid grid-cols-4 gap-2 mb-6">
+                {["쥐", "소", "호랑이", "토끼", "용", "뱀", "말", "양", "원숭이", "닭", "개", "돼지"].map((animal) => (
+                  <div key={animal} className="text-center p-2 border border-neutral-200 rounded-lg text-sm">
+                    {animal}
+                  </div>
+                ))}
+              </div>
+              <ul className="space-y-2 text-sm text-neutral-600">
+                <li>• 캐릭터가 운세 전달 및 코칭</li>
+                <li>• 레벨업 시 진화 시스템</li>
+                <li>• 시즌 한정 스킨 수집</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Blue Ocean Section */}
+      <section id="blue-ocean" className="min-h-screen py-16 px-6 border-t border-neutral-200 flex items-center">
+        <div className="max-w-6xl mx-auto w-full">
+          <div className="mb-12">
+            <h2 className="text-headline mb-6">
+              아무도 하지 않은 조합
+            </h2>
+            <p className="text-body-large text-neutral-600 max-w-3xl">
+              전 세계 어떤 서비스도 운세 + 인생설계 + 게이미피케이션 + 실시간 맥락화를 결합하지 않았습니다.
+              DITTO는 이 네 가지가 만나는 블루오션에 위치합니다.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            <div>
+              <BlueOceanDiagram />
+            </div>
+            <div>
+              <div className="mb-8">
+                <WhyWhatHowDiagram />
+              </div>
+              <div className="space-y-4">
+                <div className="flex items-start gap-4 p-4 border border-neutral-200 rounded-lg">
+                  <Target size={28} weight="bold" className="flex-shrink-0" />
+                  <div>
+                    <h4 className="font-semibold">사주가 WHY</h4>
+                    <p className="text-sm text-neutral-600">왜 이런 성향인지, 왜 이 시기가 중요한지</p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-4 p-4 border border-neutral-200 rounded-lg">
+                  <ListChecks size={28} weight="bold" className="flex-shrink-0" />
+                  <div>
+                    <h4 className="font-semibold">인생설계가 WHAT</h4>
+                    <p className="text-sm text-neutral-600">무엇을 목표로 할지, 어떤 행동을 취할지</p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-4 p-4 bg-black text-white rounded-lg">
+                  <Robot size={28} weight="bold" className="flex-shrink-0" />
+                  <div>
+                    <h4 className="font-semibold">AI가 HOW</h4>
+                    <p className="text-sm opacity-90">어떻게 실행할지, 맥락에 맞게 가이드</p>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
