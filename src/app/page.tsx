@@ -1,6 +1,7 @@
 "use client";
 
 import SectionIndicator from "@/components/SectionIndicator";
+import PresenterSync from "@/components/PresenterSync";
 import AppCard from "@/components/AppCard";
 import TechCard from "@/components/TechCard";
 import PatentCard from "@/components/PatentCard";
@@ -302,6 +303,7 @@ export default function Home() {
   return (
     <main className="min-h-screen bg-white">
       <SectionIndicator />
+      <PresenterSync />
 
       {/* Hero Section */}
       <section id="hero" className="min-h-screen flex flex-col items-center justify-center px-6 relative">
@@ -1158,24 +1160,24 @@ export default function Home() {
       </section>
 
       {/* Metaverse Insight Section 1 - Timeline */}
-      <section id="metaverse-insight" className="min-h-screen py-16 px-6 border-t border-neutral-200 bg-neutral-900 text-white flex items-center">
+      <section id="metaverse-insight" className="min-h-screen py-16 px-6 border-t border-neutral-200 bg-white flex items-center">
         <div className="max-w-6xl mx-auto w-full">
           <div className="mb-16">
-            <p className="text-base font-medium text-neutral-400 mb-4 tracking-widest">INSIGHT</p>
+            <p className="text-base font-medium text-neutral-500 mb-4 tracking-widest">INSIGHT</p>
             <h2 className="text-headline mb-6">
               메타버스, 어디로 가는가
             </h2>
-            <p className="text-xl text-neutral-400 max-w-3xl">
+            <p className="text-xl text-neutral-500 max-w-3xl">
               2027년 스마트글래스 대중화를 기점으로 메타버스는 새로운 국면에 진입합니다.
             </p>
           </div>
 
           {/* Timeline - 2x2 Grid with larger content */}
           <div className="grid md:grid-cols-2 gap-8 mb-16">
-            <div className="border border-neutral-700 rounded-2xl p-8 bg-neutral-800">
+            <div className="border border-neutral-200 rounded-2xl p-8 bg-neutral-50">
               <div className="text-5xl font-bold mb-3">2026</div>
-              <div className="text-lg text-neutral-400 mb-6">기술 기반 확립</div>
-              <ul className="space-y-3 text-lg text-neutral-300">
+              <div className="text-lg text-neutral-500 mb-6">기술 기반 확립</div>
+              <ul className="space-y-3 text-lg text-neutral-600">
                 <li className="flex items-start gap-3">
                   <ArrowRight size={20} className="flex-shrink-0 mt-1" />
                   <span>AI 코치 + LLM 대화 시스템</span>
@@ -1194,10 +1196,10 @@ export default function Home() {
                 </li>
               </ul>
             </div>
-            <div className="border border-neutral-700 rounded-2xl p-8 bg-neutral-800">
+            <div className="border border-neutral-200 rounded-2xl p-8 bg-neutral-50">
               <div className="text-4xl font-bold mb-3">2027 상반기</div>
-              <div className="text-lg text-neutral-400 mb-6">생태계 확장</div>
-              <ul className="space-y-3 text-lg text-neutral-300">
+              <div className="text-lg text-neutral-500 mb-6">생태계 확장</div>
+              <ul className="space-y-3 text-lg text-neutral-600">
                 <li className="flex items-start gap-3">
                   <ArrowRight size={20} className="flex-shrink-0 mt-1" />
                   <span>크리에이터 SDK 공개</span>
@@ -1216,10 +1218,10 @@ export default function Home() {
                 </li>
               </ul>
             </div>
-            <div className="border-4 border-white rounded-2xl p-8 bg-white text-black">
+            <div className="border-4 border-black rounded-2xl p-8 bg-black text-white">
               <div className="text-4xl font-bold mb-3">2027 하반기</div>
-              <div className="text-lg text-neutral-500 mb-6">메타버스 통합 — 전환점</div>
-              <ul className="space-y-3 text-lg text-neutral-700">
+              <div className="text-lg text-neutral-300 mb-6">메타버스 통합 — 전환점</div>
+              <ul className="space-y-3 text-lg text-neutral-200">
                 <li className="flex items-start gap-3">
                   <ArrowRight size={20} className="flex-shrink-0 mt-1" />
                   <span><strong>스마트글래스 최적화</strong></span>
@@ -1238,10 +1240,10 @@ export default function Home() {
                 </li>
               </ul>
             </div>
-            <div className="border border-neutral-700 rounded-2xl p-8 bg-neutral-800">
+            <div className="border border-neutral-200 rounded-2xl p-8 bg-neutral-50">
               <div className="text-5xl font-bold mb-3">2028+</div>
-              <div className="text-lg text-neutral-400 mb-6">시장 선도</div>
-              <ul className="space-y-3 text-lg text-neutral-300">
+              <div className="text-lg text-neutral-500 mb-6">시장 선도</div>
+              <ul className="space-y-3 text-lg text-neutral-600">
                 <li className="flex items-start gap-3">
                   <ArrowRight size={20} className="flex-shrink-0 mt-1" />
                   <span>메타버스 경제 생태계</span>
@@ -1263,27 +1265,27 @@ export default function Home() {
           </div>
 
           {/* Why 2027 */}
-          <div className="bg-neutral-800 rounded-2xl p-10 border border-neutral-700">
+          <div className="bg-neutral-100 rounded-2xl p-10 border border-neutral-200">
             <h3 className="text-3xl font-bold mb-8">왜 2027년 하반기가 전환점인가?</h3>
             <div className="grid md:grid-cols-3 gap-8">
               <div>
-                <h4 className="text-xl font-bold mb-4 text-white">스마트글래스 대중화</h4>
-                <p className="text-neutral-300 text-lg leading-relaxed">
+                <h4 className="text-xl font-bold mb-4">스마트글래스 대중화</h4>
+                <p className="text-neutral-600 text-lg leading-relaxed">
                   Apple Vision Pro 이후 경량 디바이스가 대중 시장에 진입.
-                  메타버스는 <strong className="text-white">"게임"에서 "일상"</strong>으로 전환됩니다.
+                  메타버스는 <strong>"게임"에서 "일상"</strong>으로 전환됩니다.
                 </p>
               </div>
               <div>
-                <h4 className="text-xl font-bold mb-4 text-white">AR 오버레이 시대</h4>
-                <p className="text-neutral-300 text-lg leading-relaxed">
+                <h4 className="text-xl font-bold mb-4">AR 오버레이 시대</h4>
+                <p className="text-neutral-600 text-lg leading-relaxed">
                   현실 위에 정보가 자연스럽게 표시되는 AR 오버레이가
-                  <strong className="text-white"> 새로운 UX 표준</strong>이 됩니다.
+                  <strong> 새로운 UX 표준</strong>이 됩니다.
                 </p>
               </div>
               <div>
-                <h4 className="text-xl font-bold mb-4 text-white">공간 컴퓨팅</h4>
-                <p className="text-neutral-300 text-lg leading-relaxed">
-                  2D 스크린을 넘어 <strong className="text-white">3D 공간에서의 상호작용</strong>이
+                <h4 className="text-xl font-bold mb-4">공간 컴퓨팅</h4>
+                <p className="text-neutral-600 text-lg leading-relaxed">
+                  2D 스크린을 넘어 <strong>3D 공간에서의 상호작용</strong>이
                   일상화됩니다.
                 </p>
               </div>
@@ -1293,10 +1295,10 @@ export default function Home() {
       </section>
 
       {/* Metaverse Insight Section 2 - DITTO's Preparation */}
-      <section id="metaverse-insight-2" className="min-h-screen py-16 px-6 border-t border-neutral-800 bg-neutral-900 text-white flex items-center">
+      <section id="metaverse-insight-2" className="min-h-screen py-16 px-6 border-t border-neutral-200 bg-white flex items-center">
         <div className="max-w-6xl mx-auto w-full">
           <div className="mb-12">
-            <p className="text-base font-medium text-neutral-400 mb-4 tracking-widest">INSIGHT</p>
+            <p className="text-base font-medium text-neutral-500 mb-4 tracking-widest">INSIGHT</p>
             <h2 className="text-headline mb-6">
               DITTO의 준비
             </h2>
@@ -1304,21 +1306,21 @@ export default function Home() {
 
           {/* DITTO's Preparation - 3 columns */}
           <div className="grid md:grid-cols-3 gap-8 mb-16">
-            <div className="bg-white text-black rounded-2xl p-8">
+            <div className="bg-neutral-100 rounded-2xl p-8 border border-neutral-200">
               <div className="text-4xl mb-4">📱 → 🥽</div>
               <h4 className="text-2xl font-bold mb-4">단계적 전환 설계</h4>
               <p className="text-lg text-neutral-600 leading-relaxed">
                 모바일 → 웹 → AR → 메타버스로 <strong>자연스러운 사용자 경험 전환 경로</strong>를 설계합니다.
               </p>
             </div>
-            <div className="bg-white text-black rounded-2xl p-8">
+            <div className="bg-neutral-100 rounded-2xl p-8 border border-neutral-200">
               <div className="text-4xl mb-4">🧬</div>
               <h4 className="text-2xl font-bold mb-4">3D 아바타 시스템</h4>
               <p className="text-lg text-neutral-600 leading-relaxed">
                 사주 기반 <strong>디지털 DNA 아바타</strong>를 메타버스 환경에 즉시 적용 가능하도록 준비합니다.
               </p>
             </div>
-            <div className="bg-white text-black rounded-2xl p-8">
+            <div className="bg-neutral-100 rounded-2xl p-8 border border-neutral-200">
               <div className="text-4xl mb-4">🏛️</div>
               <h4 className="text-2xl font-bold mb-4">운세 라운지</h4>
               <p className="text-lg text-neutral-600 leading-relaxed">
@@ -1331,31 +1333,31 @@ export default function Home() {
           <div className="mb-16">
             <h3 className="text-3xl font-bold mb-8">메타버스 시대의 산업 융합</h3>
             <div className="grid md:grid-cols-5 gap-6">
-              <div className="text-center p-8 bg-neutral-800 rounded-2xl border border-neutral-700">
+              <div className="text-center p-8 bg-neutral-50 rounded-2xl border border-neutral-200">
                 <p className="text-2xl font-bold mb-3">교육</p>
-                <p className="text-base text-neutral-400">진로 탐색<br/>적성 교육</p>
+                <p className="text-base text-neutral-500">진로 탐색<br/>적성 교육</p>
               </div>
-              <div className="text-center p-8 bg-neutral-800 rounded-2xl border border-neutral-700">
+              <div className="text-center p-8 bg-neutral-50 rounded-2xl border border-neutral-200">
                 <p className="text-2xl font-bold mb-3">헬스케어</p>
-                <p className="text-base text-neutral-400">정신건강<br/>웰빙 코칭</p>
+                <p className="text-base text-neutral-500">정신건강<br/>웰빙 코칭</p>
               </div>
-              <div className="text-center p-8 bg-neutral-800 rounded-2xl border border-neutral-700">
+              <div className="text-center p-8 bg-neutral-50 rounded-2xl border border-neutral-200">
                 <p className="text-2xl font-bold mb-3">엔터테인먼트</p>
-                <p className="text-base text-neutral-400">스토리 게임<br/>인터랙티브</p>
+                <p className="text-base text-neutral-500">스토리 게임<br/>인터랙티브</p>
               </div>
-              <div className="text-center p-8 bg-neutral-800 rounded-2xl border border-neutral-700">
+              <div className="text-center p-8 bg-neutral-50 rounded-2xl border border-neutral-200">
                 <p className="text-2xl font-bold mb-3">커머스</p>
-                <p className="text-base text-neutral-400">맞춤 추천<br/>가상 굿즈</p>
+                <p className="text-base text-neutral-500">맞춤 추천<br/>가상 굿즈</p>
               </div>
-              <div className="text-center p-8 bg-neutral-800 rounded-2xl border border-neutral-700">
+              <div className="text-center p-8 bg-neutral-50 rounded-2xl border border-neutral-200">
                 <p className="text-2xl font-bold mb-3">HR/채용</p>
-                <p className="text-base text-neutral-400">팀 궁합<br/>조직 컨설팅</p>
+                <p className="text-base text-neutral-500">팀 궁합<br/>조직 컨설팅</p>
               </div>
             </div>
           </div>
 
           {/* Vision Statement */}
-          <div className="text-center py-12 border-4 border-white rounded-3xl">
+          <div className="text-center py-12 border-4 border-black rounded-3xl">
             <p className="text-4xl font-bold leading-relaxed">
               "메타버스 시대의 첫 번째<br/>
               <span className="text-5xl">운세/인생설계 플랫폼</span>"
