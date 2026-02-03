@@ -13,12 +13,15 @@ const sections = [
   { id: "ai-coaches", label: "AI 코치" },
   { id: "user-scenario", label: "사용 시나리오" },
   { id: "gamification", label: "게이미피케이션" },
-  { id: "patents", label: "검증된 기술" },
-  { id: "technologies", label: "핵심 기술" },
-  { id: "technologies-2", label: "핵심 기술" },
-  { id: "technologies-3", label: "핵심 기술" },
+  { id: "data-life-design", label: "인생 설계" },
+  { id: "patents", label: "DITTO 기술" },
+  { id: "technologies", label: "10대 기술" },
+  { id: "technologies-2", label: "10대 기술" },
+  { id: "technologies-3", label: "10대 기술" },
   { id: "roadmap", label: "12개월 로드맵" },
   { id: "summary", label: "요약" },
+  { id: "metaverse-insight", label: "메타버스 인사이트" },
+  { id: "metaverse-insight-2", label: "메타버스 인사이트" },
 ];
 
 export default function SectionIndicator() {

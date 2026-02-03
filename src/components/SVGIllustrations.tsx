@@ -79,38 +79,46 @@ export function MetaverseConceptDiagram() {
 
 export function RoadmapDiagram() {
   return (
-    <svg viewBox="0 0 800 120" className="w-full max-w-6xl mx-auto" fill="none">
+    <svg viewBox="0 0 900 120" className="w-full max-w-6xl mx-auto" fill="none">
       {/* Timeline */}
-      <line x1="50" y1="40" x2="750" y2="40" className="stroke-current opacity-30" strokeWidth="2" />
+      <line x1="30" y1="40" x2="870" y2="40" className="stroke-current opacity-30" strokeWidth="2" />
 
-      {/* 2월 */}
-      <circle cx="100" cy="40" r="20" className="stroke-current fill-current" strokeWidth="2" />
-      <text x="100" y="45" textAnchor="middle" className="fill-white text-xs font-bold">2월</text>
-      <text x="100" y="85" textAnchor="middle" className="fill-current text-sm font-medium">MVP 개발</text>
+      {/* 1-2월 */}
+      <circle cx="80" cy="40" r="20" className="stroke-current fill-current" strokeWidth="2" />
+      <text x="80" y="45" textAnchor="middle" className="fill-white text-xs font-bold">1-2월</text>
+      <text x="80" y="85" textAnchor="middle" className="fill-current text-sm font-medium">MVP 개발</text>
 
       {/* Arrow 1 */}
-      <polygon points="190,35 205,40 190,45" className="fill-current opacity-50" />
+      <polygon points="140,35 155,40 140,45" className="fill-current opacity-50" />
 
-      {/* 3월 */}
-      <circle cx="300" cy="40" r="20" className="stroke-current" strokeWidth="2" fill="none" />
-      <text x="300" y="45" textAnchor="middle" className="fill-current text-xs font-bold">3월</text>
-      <text x="300" y="85" textAnchor="middle" className="fill-current text-sm font-medium">베타 테스트</text>
+      {/* 3월 - Launch */}
+      <circle cx="230" cy="40" r="24" className="fill-black stroke-black" strokeWidth="3" />
+      <text x="230" y="46" textAnchor="middle" fill="white" className="text-xs font-bold">3월</text>
+      <text x="230" y="85" textAnchor="middle" className="fill-current text-sm font-bold">1차 출시</text>
 
       {/* Arrow 2 */}
-      <polygon points="390,35 405,40 390,45" className="fill-current opacity-50" />
+      <polygon points="300,35 315,40 300,45" className="fill-current opacity-50" />
 
-      {/* 4월 1일 - Launch */}
-      <circle cx="500" cy="40" r="24" className="fill-black stroke-black" strokeWidth="3" />
-      <text x="500" y="46" textAnchor="middle" fill="white" className="text-xs font-bold">4/1</text>
-      <text x="500" y="85" textAnchor="middle" className="fill-current text-sm font-bold">제품 출시</text>
+      {/* 4-6월 */}
+      <circle cx="400" cy="40" r="20" className="stroke-current" strokeWidth="2" fill="none" />
+      <text x="400" y="45" textAnchor="middle" className="fill-current text-xs font-bold">4-6월</text>
+      <text x="400" y="85" textAnchor="middle" className="fill-current text-sm font-medium">확장 1단계</text>
 
       {/* Arrow 3 */}
-      <polygon points="590,35 605,40 590,45" className="fill-current opacity-50" />
+      <polygon points="470,35 485,40 470,45" className="fill-current opacity-50" />
 
-      {/* 5월~ */}
-      <circle cx="700" cy="40" r="20" className="stroke-current" strokeWidth="2" fill="none" />
-      <text x="700" y="45" textAnchor="middle" className="fill-current text-xs font-bold">5월~</text>
-      <text x="700" y="85" textAnchor="middle" className="fill-current text-sm font-medium">기능 확장</text>
+      {/* 7월 - Major Update */}
+      <circle cx="570" cy="40" r="22" className="fill-black stroke-black" strokeWidth="2" />
+      <text x="570" y="46" textAnchor="middle" fill="white" className="text-xs font-bold">7월</text>
+      <text x="570" y="85" textAnchor="middle" className="fill-current text-sm font-bold">대규모 업데이트</text>
+
+      {/* Arrow 4 */}
+      <polygon points="640,35 655,40 640,45" className="fill-current opacity-50" />
+
+      {/* 하반기 */}
+      <circle cx="780" cy="40" r="20" className="stroke-current" strokeWidth="2" fill="none" />
+      <text x="780" y="45" textAnchor="middle" className="fill-current text-xs font-bold">하반기</text>
+      <text x="780" y="85" textAnchor="middle" className="fill-current text-sm font-medium">생태계 확장</text>
     </svg>
   );
 }
@@ -226,6 +234,90 @@ export function WhyWhatHowDiagram() {
       {/* Result Circle - 행동 */}
       <circle cx="665" cy="70" r="30" className="fill-current" />
       <text x="665" y="75" textAnchor="middle" fill="white" className="text-xs font-bold">행동</text>
+    </svg>
+  );
+}
+
+export function DataToLifeDesignDiagram() {
+  return (
+    <svg viewBox="0 0 800 320" className="w-full max-w-5xl mx-auto" fill="none">
+      {/* User Data Sources - Top Row */}
+      <text x="400" y="25" textAnchor="middle" className="fill-current text-sm font-bold">나의 데이터</text>
+
+      {/* Data input boxes */}
+      <rect x="40" y="40" width="100" height="45" rx="6" className="stroke-current" strokeWidth="1.5" fill="none" />
+      <text x="90" y="58" textAnchor="middle" className="fill-current text-xs font-medium">생년월일시</text>
+      <text x="90" y="73" textAnchor="middle" className="fill-current text-[10px] opacity-60">사주 명식</text>
+
+      <rect x="160" y="40" width="100" height="45" rx="6" className="stroke-current" strokeWidth="1.5" fill="none" />
+      <text x="210" y="58" textAnchor="middle" className="fill-current text-xs font-medium">일상 패턴</text>
+      <text x="210" y="73" textAnchor="middle" className="fill-current text-[10px] opacity-60">수면, 활동, 습관</text>
+
+      <rect x="280" y="40" width="100" height="45" rx="6" className="stroke-current" strokeWidth="1.5" fill="none" />
+      <text x="330" y="58" textAnchor="middle" className="fill-current text-xs font-medium">목표 & 고민</text>
+      <text x="330" y="73" textAnchor="middle" className="fill-current text-[10px] opacity-60">커리어, 관계</text>
+
+      <rect x="400" y="40" width="100" height="45" rx="6" className="stroke-current" strokeWidth="1.5" fill="none" />
+      <text x="450" y="58" textAnchor="middle" className="fill-current text-xs font-medium">대화 히스토리</text>
+      <text x="450" y="73" textAnchor="middle" className="fill-current text-[10px] opacity-60">맥락, 선호</text>
+
+      <rect x="520" y="40" width="100" height="45" rx="6" className="stroke-current" strokeWidth="1.5" fill="none" />
+      <text x="570" y="58" textAnchor="middle" className="fill-current text-xs font-medium">행동 데이터</text>
+      <text x="570" y="73" textAnchor="middle" className="fill-current text-[10px] opacity-60">퀘스트, 실천</text>
+
+      <rect x="640" y="40" width="100" height="45" rx="6" className="stroke-current" strokeWidth="1.5" fill="none" />
+      <text x="690" y="58" textAnchor="middle" className="fill-current text-xs font-medium">실시간 맥락</text>
+      <text x="690" y="73" textAnchor="middle" className="fill-current text-[10px] opacity-60">날씨, 이벤트</text>
+
+      {/* Arrows down to DITTO */}
+      <line x1="90" y1="85" x2="350" y2="120" className="stroke-current opacity-40" strokeWidth="1.5" />
+      <line x1="210" y1="85" x2="370" y2="120" className="stroke-current opacity-40" strokeWidth="1.5" />
+      <line x1="330" y1="85" x2="390" y2="120" className="stroke-current opacity-40" strokeWidth="1.5" />
+      <line x1="450" y1="85" x2="410" y2="120" className="stroke-current opacity-40" strokeWidth="1.5" />
+      <line x1="570" y1="85" x2="430" y2="120" className="stroke-current opacity-40" strokeWidth="1.5" />
+      <line x1="690" y1="85" x2="450" y2="120" className="stroke-current opacity-40" strokeWidth="1.5" />
+
+      {/* DITTO AI Analysis Center */}
+      <rect x="300" y="120" width="200" height="70" rx="12" className="fill-current" />
+      <text x="400" y="150" textAnchor="middle" fill="white" className="text-sm font-bold">DITTO AI 분석</text>
+      <text x="400" y="170" textAnchor="middle" fill="white" className="text-[10px] opacity-80">사주 기반 맞춤 인생 설계 엔진</text>
+
+      {/* Arrows down to Life Design outputs */}
+      <line x1="340" y1="190" x2="120" y2="230" className="stroke-current" strokeWidth="2" />
+      <line x1="370" y1="190" x2="280" y2="230" className="stroke-current" strokeWidth="2" />
+      <line x1="400" y1="190" x2="400" y2="230" className="stroke-current" strokeWidth="2" />
+      <line x1="430" y1="190" x2="520" y2="230" className="stroke-current" strokeWidth="2" />
+      <line x1="460" y1="190" x2="680" y2="230" className="stroke-current" strokeWidth="2" />
+
+      {/* Life Design Output Boxes */}
+      <rect x="60" y="230" width="120" height="50" rx="8" className="stroke-current" strokeWidth="2" fill="none" />
+      <text x="120" y="252" textAnchor="middle" className="fill-current text-xs font-bold">커리어 로드맵</text>
+      <text x="120" y="268" textAnchor="middle" className="fill-current text-[10px] opacity-60">적성 × 시기 분석</text>
+
+      <rect x="220" y="230" width="120" height="50" rx="8" className="stroke-current" strokeWidth="2" fill="none" />
+      <text x="280" y="252" textAnchor="middle" className="fill-current text-xs font-bold">관계 설계</text>
+      <text x="280" y="268" textAnchor="middle" className="fill-current text-[10px] opacity-60">궁합 × 소통 가이드</text>
+
+      <rect x="340" y="230" width="120" height="50" rx="8" className="fill-current" />
+      <text x="400" y="252" textAnchor="middle" fill="white" className="text-xs font-bold">건강 플랜</text>
+      <text x="400" y="268" textAnchor="middle" fill="white" className="text-[10px] opacity-80">체질 × 습관 코칭</text>
+
+      <rect x="460" y="230" width="120" height="50" rx="8" className="stroke-current" strokeWidth="2" fill="none" />
+      <text x="520" y="252" textAnchor="middle" className="fill-current text-xs font-bold">재정 전략</text>
+      <text x="520" y="268" textAnchor="middle" className="fill-current text-[10px] opacity-60">재운 × 투자 타이밍</text>
+
+      <rect x="620" y="230" width="120" height="50" rx="8" className="stroke-current" strokeWidth="2" fill="none" />
+      <text x="680" y="252" textAnchor="middle" className="fill-current text-xs font-bold">성장 여정</text>
+      <text x="680" y="268" textAnchor="middle" className="fill-current text-[10px] opacity-60">대운 × 목표 설정</text>
+
+      {/* Bottom - Final outcome */}
+      <line x1="120" y1="280" x2="350" y2="305" className="stroke-current opacity-40" strokeWidth="1.5" />
+      <line x1="280" y1="280" x2="370" y2="305" className="stroke-current opacity-40" strokeWidth="1.5" />
+      <line x1="400" y1="280" x2="400" y2="305" className="stroke-current opacity-40" strokeWidth="1.5" />
+      <line x1="520" y1="280" x2="430" y2="305" className="stroke-current opacity-40" strokeWidth="1.5" />
+      <line x1="680" y1="280" x2="450" y2="305" className="stroke-current opacity-40" strokeWidth="1.5" />
+
+      <polygon points="400,305 392,295 408,295" className="fill-current" />
     </svg>
   );
 }

@@ -116,7 +116,7 @@ export default function AppCard({
       <div className="bg-black text-white rounded-lg p-5">
         <h5 className="flex items-center gap-2 text-base font-semibold mb-2">
           <Target size={20} weight="bold" />
-          배울 점
+          우리가 배울 점
         </h5>
         <p className="text-base opacity-90 leading-relaxed">
           {weLearn}

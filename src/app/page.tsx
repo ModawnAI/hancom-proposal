@@ -10,6 +10,7 @@ import {
   WhyWhatHowDiagram,
   BlueOceanDiagram,
   DailyFlowDiagram,
+  DataToLifeDesignDiagram,
 } from "@/components/SVGIllustrations";
 import {
   ArrowDown,
@@ -139,161 +140,161 @@ const globalApps = [
   },
 ];
 
-// 기술 데이터
+// 기술 데이터 - 10대 DITTO 기술
 const technologies = [
+  {
+    title: "LLM 대화 엔진",
+    patentRef: "Core AI",
+    description:
+      "사주/운세 도메인에 특화된 LLM 기반 대화 시스템. 자연스러운 후속 질문과 맥락 유지.",
+    application:
+      "\"왜 오늘 직장운이 좋아요?\" → 상세 해석과 구체적 행동 가이드 제공.",
+    icon: <Robot size={24} weight="bold" />,
+  },
+  {
+    title: "AI Agent 시스템",
+    patentRef: "Multi-Agent",
+    description:
+      "오행(목화토금수) 기반 5가지 전문 AI 코치. 각 영역별 독립적 의사결정과 협업.",
+    application:
+      "커리어 고민 → 목(木) 코치 활성화, 재테크 질문 → 금(金) 코치가 응답.",
+    icon: <Brain size={24} weight="bold" />,
+  },
+  {
+    title: "사주 RAG 시스템",
+    patentRef: "Knowledge Base",
+    description:
+      "만세력 데이터, 격국 해석, 용신 분석 등 전문 지식을 벡터 DB로 구축한 검색 증강 생성.",
+    application:
+      "정확한 만세력 계산 + 전문가 수준의 해석을 실시간으로 제공.",
+    icon: <Cube size={24} weight="bold" />,
+  },
+  {
+    title: "실시간 맥락 분석",
+    patentRef: "Context Engine",
+    description:
+      "날씨, 뉴스, 주식, 이벤트 등 외부 데이터를 사주와 결합한 동적 운세 생성.",
+    application:
+      "비 오는 날 + 수(水) 기운 상승 = 오늘의 맞춤 행동 추천 자동 생성.",
+    icon: <Sparkle size={24} weight="bold" />,
+  },
+  {
+    title: "개인화 추천 엔진",
+    patentRef: "Personalization",
+    description:
+      "사용자 행동 데이터, 퀘스트 완료율, 대화 패턴을 학습하여 추천 정확도 지속 향상.",
+    application:
+      "사용자가 재테크 퀘스트를 자주 완료 → 금(金) 관련 콘텐츠 우선 노출.",
+    icon: <TrendUp size={24} weight="bold" />,
+  },
   {
     title: "디지털 DNA 아바타",
     patentRef: "#1",
     description:
-      "사주 명식 요소 기반 자동 아바타 생성. 오행(목화토금수)이 기본 외형, 색상, 스타일을 결정.",
+      "사주 명식의 오행 비율이 아바타 외형, 색상, 스타일을 자동 결정.",
     application:
-      "사용자의 사주가 시각적 정체성이 됨. 갑목(甲木) 사용자는 자연 톤의 성장 지향적 아바타 자동 생성.",
+      "갑목(甲木) 일간 → 자연 톤, 성장 지향적 아바타 자동 생성.",
     icon: <User size={24} weight="bold" />,
   },
   {
-    title: "AI 성격 매핑",
-    patentRef: "#179",
+    title: "운세 연동 성장 시스템",
+    patentRef: "#76",
     description:
-      "사주/점성술 결과를 아바타 행동 패턴에 반영. MBTI와 유사하지만 동양 철학 기반.",
+      "대운(10년)과 세운(연운) 변화에 따라 아바타와 콘텐츠가 함께 진화.",
     application:
-      "식신격(創意型) 아바타는 메타버스에서 예술적 관심, 음식 선호, 혁신적 행동을 보여줌.",
-    icon: <Brain size={24} weight="bold" />,
+      "40대 대운 진입 시 아바타 변신 + 새로운 인생 단계 코칭 시작.",
+    icon: <Path size={24} weight="bold" />,
   },
   {
-    title: "운명적 매칭 시스템",
+    title: "궁합 매칭 엔진",
     patentRef: "#15",
     description:
-      "사주 궁합과 점성술 조화 계산 기반 AI 매칭.",
+      "사주 궁합 알고리즘 기반 AI 매칭. 연애, 비즈니스, 친구 관계 분석.",
     application:
-      "친구, 연인, 비즈니스 협력자를 오행 조화 점수로 매칭.",
+      "오행 조화 점수로 파트너 궁합 분석 + 관계 개선 전략 제안.",
     icon: <Heart size={24} weight="bold" />,
   },
   {
-    title: "대인관계 시뮬레이터",
-    patentRef: "#62",
+    title: "게이미피케이션 엔진",
+    patentRef: "Engagement",
     description:
-      "AI가 톤과 표정을 읽어 대인 역학을 예측. 사주로 예측된 패턴을 실제로 체험.",
+      "스트릭, 퀘스트, 리그, XP 시스템으로 지속적 참여 유도. Duolingo 검증 모델 적용.",
     application:
-      "편관(直接型) 유형은 자신의 스타일이 타인에게 어떤 영향을 미치는지 실제 상호작용 전에 시뮬레이션.",
-    icon: <ChatCircle size={24} weight="bold" />,
+      "127일 스트릭 유지 중 → 손실 회피 심리로 매일 접속 동기 부여.",
+    icon: <GameController size={24} weight="bold" />,
   },
   {
-    title: "진로 가상 체험",
-    patentRef: "#77",
+    title: "메타버스 통합",
+    patentRef: "3D/AR",
     description:
-      "사주 적성과 점성술 10하우스(직업운) 분석 기반 가상 직업 체험.",
+      "3D 아바타, 가상 공간, AR 필터를 통한 몰입형 운세 체험.",
     application:
-      "재성(事業型) 사용자는 실제 커리어 결정 전에 창업가의 삶을 시뮬레이션.",
-    icon: <Briefcase size={24} weight="bold" />,
-  },
-  {
-    title: "운세 연동 아바타 성장",
-    patentRef: "#76",
-    description:
-      "사용자의 대운(10년 운)과 세운(연운) 변화에 따라 아바타가 진화.",
-    application:
-      "40대 대운 진입 시 아바타가 새 삶의 단계를 반영하며 변신, 새로운 능력 해금.",
-    icon: <TrendUp size={24} weight="bold" />,
-  },
-  {
-    title: "평행우주 체험",
-    patentRef: "#44",
-    description:
-      "만약 다른 사주로 태어났다면? 대안적 삶 시뮬레이션 체험.",
-    application:
-      "다른 오행 유형으로 하루를 살아보며 자신의 사주 강약점을 비교.",
-    icon: <Cube size={24} weight="bold" />,
-  },
-  {
-    title: "실시간 운세 큐레이션",
-    patentRef: "#156",
-    description:
-      "AI가 사주 특성 + 실시간 맥락(날씨, 뉴스, 이벤트)을 기반으로 일일 콘텐츠 큐레이션.",
-    application:
-      "'금(金) 기운 상승일 + 주식 상승' = 개인화된 투자 타이밍 추천.",
-    icon: <Sparkle size={24} weight="bold" />,
-  },
-  {
-    title: "연애 시뮬레이터",
-    patentRef: "#49",
-    description:
-      "궁합이 맞는 유형과 어려운 유형의 AI 아바타와 연애 연습.",
-    application:
-      "실제 데이트 결정 전에 정관격(安定型) 파트너와의 역학을 체험.",
-    icon: <HandHeart size={24} weight="bold" />,
-  },
-  {
-    title: "운명 커뮤니티",
-    patentRef: "#81",
-    description:
-      "같은 일간, 별자리, 운세 패턴을 공유하는 사용자들과 연결.",
-    application:
-      "'갑목 라운지' - 같은 일간 사용자들이 경험과 조언을 나누는 커뮤니티.",
-    icon: <Users size={24} weight="bold" />,
+      "운세 테마 가상 공간에서 같은 띠 사용자들과 소통 및 이벤트 참여.",
+    icon: <Globe size={24} weight="bold" />,
   },
 ];
 
-// 검증된 메타버스 기술
-const metaverseTech = [
+// 검증된 DITTO 기술
+const dittoTech = [
   {
     number: 1,
-    title: "디지털 DNA 아바타 생성",
-    marketTrend: "메타버스 아바타 시장 급성장 (Roblox, Zepeto 등)",
-    application: "사주 요소가 개인화된 아바타의 시각적 DNA가 됨",
+    title: "LLM 대화 엔진",
+    marketTrend: "ChatGPT, Claude 등 대화형 AI 대중화",
+    application: "자연스러운 후속 질문과 맥락 유지 운세 대화",
   },
   {
     number: 2,
-    title: "패션 스킨 아바타 시스템",
-    marketTrend: "구찌, 발렌시아가 등 명품 브랜드 메타버스 진출",
-    application: "오행 기반 의상 추천 및 가상 패션",
+    title: "AI Agent 시스템",
+    marketTrend: "AutoGPT, CrewAI 등 AI Agent 패러다임 부상",
+    application: "5가지 오행 전문 코치가 협업하여 인생 설계",
   },
   {
     number: 3,
-    title: "이미지 기반 가상 공간",
-    marketTrend: "Apple Vision Pro, 공간 컴퓨팅 시대 도래",
-    application: "운세 테마 가상 공간 및 이벤트 장소",
+    title: "사주 RAG 시스템",
+    marketTrend: "RAG(검색 증강 생성)이 AI 정확도 핵심으로 부상",
+    application: "만세력, 격국, 용신 전문 지식 벡터 DB 구축",
   },
   {
     number: 4,
-    title: "디지털 트윈 시뮬레이션",
-    marketTrend: "NVIDIA Omniverse, Siemens 산업용 메타버스",
-    application: "비즈니스 타이밍 결정을 위한 B2B 컨설팅",
+    title: "실시간 맥락 분석",
+    marketTrend: "실시간 데이터 + AI 결합 서비스 확산",
+    application: "날씨, 뉴스, 이벤트와 사주를 결합한 동적 운세",
   },
   {
     number: 5,
-    title: "AI 아바타 헬스케어",
-    marketTrend: "고령화 사회, AI 헬스케어 융합 트렌드",
-    application: "고령 사용자를 위한 웰니스 코칭 확장",
+    title: "개인화 추천 엔진",
+    marketTrend: "Netflix, Spotify 등 개인화가 리텐션 핵심",
+    application: "행동 데이터 학습으로 추천 정확도 지속 향상",
   },
   {
     number: 6,
-    title: "AI 아바타 원격 케어",
-    marketTrend: "1인 가구 증가, 원거리 가족 연결 니즈",
-    application: "운세 기반 정서적 지원 AI 컴패니언",
+    title: "디지털 DNA 아바타",
+    marketTrend: "메타버스 아바타 시장 급성장 (Roblox, Zepeto)",
+    application: "사주 오행이 아바타 외형과 성격을 결정",
   },
   {
     number: 7,
-    title: "AI 관계 시뮬레이션",
-    marketTrend: "Character.AI 등 AI 관계 시장 급성장",
-    application: "궁합 기반 관계 시뮬레이션",
+    title: "운세 연동 성장 시스템",
+    marketTrend: "대운/세운 기반 장기 코칭 수요 증가",
+    application: "10년 대운 진입 시 아바타 변신 + 새 코칭 시작",
   },
   {
     number: 8,
-    title: "AR 외모 시뮬레이션",
-    marketTrend: "한국 뷰티/성형 시장 + AR 필터 진화",
-    application: "관상 기반 외모 컨설팅",
+    title: "궁합 매칭 엔진",
+    marketTrend: "Character.AI 등 AI 관계 시장 급성장",
+    application: "궁합 기반 관계 분석 및 소통 전략 제안",
   },
   {
     number: 9,
-    title: "메타버스 원격 협업",
-    marketTrend: "Spatial, Gather.town 등 원격근무 플랫폼",
-    application: "HR/채용을 위한 팀 궁합 분석",
+    title: "게이미피케이션 엔진",
+    marketTrend: "Duolingo 스트릭 모델 검증, 습관 앱 급성장",
+    application: "스트릭, 퀘스트, 리그로 매일 접속 동기 부여",
   },
   {
     number: 10,
-    title: "메타버스 문화체험",
-    marketTrend: "문화유산 디지털화, 관광 + 교육 융합",
-    application: "운세 테마 역사 체험 관광",
+    title: "메타버스 통합",
+    marketTrend: "Apple Vision Pro, 공간 컴퓨팅 시대 도래",
+    application: "3D 아바타, 가상 공간에서 운세 체험",
   },
 ];
 
@@ -436,7 +437,7 @@ export default function Home() {
         <div className="max-w-6xl mx-auto w-full">
           <div className="mb-12">
             <h2 className="text-headline mb-6">
-              DITTO의 차별화
+              DITTO의 차별화 전략
             </h2>
           </div>
 
@@ -548,7 +549,7 @@ export default function Home() {
               하루 사용 시나리오
             </h2>
             <p className="text-body-large text-neutral-600 max-w-3xl">
-              아침에 운세를 확인하고, 낮에 AI와 대화하고, 저녁에 퀘스트를 완료하고, 밤에 하루를 리뷰합니다.
+              아침에 운세를 확인하고, 낮에 DITTO와 대화하고, 저녁에 퀘스트를 완료하고, 밤에 하루를 리뷰합니다.
               운세가 일상에 자연스럽게 녹아드는 경험.
             </p>
           </div>
@@ -767,21 +768,106 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Data to Life Design Section */}
+      <section id="data-life-design" className="min-h-screen py-16 px-6 border-t border-neutral-200 flex items-center">
+        <div className="max-w-6xl mx-auto w-full">
+          <div className="mb-12">
+            <h2 className="text-headline mb-6">
+              데이터가 인생 설계로
+            </h2>
+            <p className="text-body-large text-neutral-600 max-w-3xl">
+              사용자의 모든 데이터를 연결하여 AI가 분석하고,
+              5가지 인생 영역별 맞춤 설계를 제공합니다.
+            </p>
+          </div>
+
+          <div className="bg-white rounded-2xl p-8 border border-neutral-200 mb-8">
+            <DataToLifeDesignDiagram />
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-8">
+            <div className="p-8 bg-white border border-neutral-200 rounded-xl">
+              <h4 className="text-xl font-bold mb-4 flex items-center gap-3">
+                <Brain size={28} weight="bold" />
+                통합 데이터 분석
+              </h4>
+              <p className="text-neutral-600 mb-6">
+                사주 명식부터 일상의 행동 데이터까지, 모든 정보를 하나로 연결합니다.
+              </p>
+              <ul className="space-y-3 text-neutral-700">
+                <li className="flex items-start gap-2">
+                  <ArrowRight size={16} className="flex-shrink-0 mt-1" />
+                  <span><strong>사주 명식</strong> - 타고난 성향과 적성의 기초</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <ArrowRight size={16} className="flex-shrink-0 mt-1" />
+                  <span><strong>일상 패턴</strong> - 수면, 활동, 습관 데이터</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <ArrowRight size={16} className="flex-shrink-0 mt-1" />
+                  <span><strong>대화 히스토리</strong> - 맥락과 선호도 학습</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <ArrowRight size={16} className="flex-shrink-0 mt-1" />
+                  <span><strong>행동 데이터</strong> - 퀘스트 완료, 실천 기록</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <ArrowRight size={16} className="flex-shrink-0 mt-1" />
+                  <span><strong>실시간 맥락</strong> - 날씨, 뉴스, 이벤트 연동</span>
+                </li>
+              </ul>
+            </div>
+
+            <div className="p-8 bg-black text-white rounded-xl">
+              <h4 className="text-xl font-bold mb-4 flex items-center gap-3">
+                <Path size={28} weight="bold" />
+                맞춤형 인생 설계
+              </h4>
+              <p className="opacity-80 mb-6">
+                분석된 데이터를 바탕으로 5가지 인생 영역의 개인화된 로드맵을 제공합니다.
+              </p>
+              <ul className="space-y-3 opacity-90">
+                <li className="flex items-start gap-2">
+                  <ArrowRight size={16} className="flex-shrink-0 mt-1" />
+                  <span><strong>커리어 로드맵</strong> - 적성 × 대운 시기 분석</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <ArrowRight size={16} className="flex-shrink-0 mt-1" />
+                  <span><strong>관계 설계</strong> - 궁합 분석 × 소통 전략</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <ArrowRight size={16} className="flex-shrink-0 mt-1" />
+                  <span><strong>건강 플랜</strong> - 체질 × 맞춤 생활 습관</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <ArrowRight size={16} className="flex-shrink-0 mt-1" />
+                  <span><strong>재정 전략</strong> - 재운 흐름 × 투자 타이밍</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <ArrowRight size={16} className="flex-shrink-0 mt-1" />
+                  <span><strong>성장 여정</strong> - 10년 대운 기반 목표 설계</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Patents Section */}
       <section id="patents" className="min-h-screen py-16 px-6 border-t border-neutral-200 bg-neutral-50 flex items-center">
         <div className="max-w-6xl mx-auto w-full">
           <div className="mb-16">
             <h2 className="text-headline mb-6">
-              검증된 메타버스 기술
+              검증된 DITTO 기술
             </h2>
             <p className="text-body-large text-neutral-600 max-w-3xl">
-              글로벌 메타버스 시장에서 검증된 10가지 핵심 기술.
-              DITTO는 이 기술들을 운세/인생설계 도메인에 적용합니다.
+              글로벌 AI/메타버스 시장에서 검증된 10가지 핵심 기술.
+              DITTO는 이 기술들을 운세/인생설계 도메인에 최적화하여 적용합니다.
             </p>
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
-            {metaverseTech.map((tech) => (
+            {dittoTech.map((tech) => (
               <PatentCard key={tech.number} {...tech} />
             ))}
           </div>
@@ -793,11 +879,10 @@ export default function Home() {
         <div className="max-w-6xl mx-auto w-full">
           <div className="mb-12">
             <h2 className="text-headline mb-6">
-              10대 메타버스 기술
+              10대 DITTO 기술
             </h2>
             <p className="text-body-large text-neutral-600 max-w-3xl">
-              운세/인생설계 도메인에 맞게 적용된 검증된 메타버스 기술.
-              각 기술은 IP 보호를 위한 특허 포트폴리오와 연결.
+              AI, Agent, RAG부터 메타버스까지. DITTO를 구성하는 핵심 기술 스택.
             </p>
           </div>
 
@@ -814,7 +899,7 @@ export default function Home() {
         <div className="max-w-6xl mx-auto w-full">
           <div className="mb-12">
             <h2 className="text-headline mb-6">
-              10대 메타버스 기술 (계속)
+              10대 DITTO 기술 (계속)
             </h2>
           </div>
 
@@ -831,7 +916,7 @@ export default function Home() {
         <div className="max-w-6xl mx-auto w-full">
           <div className="mb-12">
             <h2 className="text-headline mb-6">
-              10대 메타버스 기술 (계속)
+              10대 DITTO 기술 (계속)
             </h2>
           </div>
 
@@ -856,16 +941,17 @@ export default function Home() {
             <RoadmapDiagram />
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {/* 2월 */}
+          {/* 상단 3개 카드 */}
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-6">
+            {/* 1-2월 */}
             <div className="bg-white border border-neutral-200 rounded-xl p-6 hover:border-black transition-colors">
               <div className="flex items-center gap-4 mb-6">
                 <div className="w-14 h-14 rounded-full bg-black text-white flex items-center justify-center font-bold text-lg">
-                  2월
+                  1-2월
                 </div>
                 <div>
                   <h3 className="text-2xl font-bold">MVP 개발</h3>
-                  <p className="text-base text-neutral-500">현재 진행중</p>
+                  <p className="text-base text-neutral-500">핵심 개발</p>
                 </div>
               </div>
               <ul className="space-y-3 text-base">
@@ -879,38 +965,7 @@ export default function Home() {
                 </li>
                 <li className="flex items-start gap-2">
                   <ArrowRight size={16} className="flex-shrink-0 mt-0.5" />
-                  실시간 맥락 연동
-                </li>
-                <li className="flex items-start gap-2">
-                  <ArrowRight size={16} className="flex-shrink-0 mt-0.5" />
-                  핵심 UX 설계
-                </li>
-              </ul>
-            </div>
-
-            {/* 3월 */}
-            <div className="bg-white border border-neutral-200 rounded-xl p-6 hover:border-black transition-colors">
-              <div className="flex items-center gap-4 mb-6">
-                <div className="w-14 h-14 rounded-full border-2 border-black flex items-center justify-center font-bold text-lg">
-                  3월
-                </div>
-                <div>
-                  <h3 className="text-2xl font-bold">베타 테스트</h3>
-                  <p className="text-base text-neutral-500">내부 검증</p>
-                </div>
-              </div>
-              <ul className="space-y-3 text-base">
-                <li className="flex items-start gap-2">
-                  <ArrowRight size={16} className="flex-shrink-0 mt-0.5" />
-                  인생설계 기본 기능
-                </li>
-                <li className="flex items-start gap-2">
-                  <ArrowRight size={16} className="flex-shrink-0 mt-0.5" />
-                  내부 베타 테스트
-                </li>
-                <li className="flex items-start gap-2">
-                  <ArrowRight size={16} className="flex-shrink-0 mt-0.5" />
-                  버그 수정 및 최적화
+                  핵심 UX/UI 완성
                 </li>
                 <li className="flex items-start gap-2">
                   <ArrowRight size={16} className="flex-shrink-0 mt-0.5" />
@@ -919,14 +974,14 @@ export default function Home() {
               </ul>
             </div>
 
-            {/* 4월 1일 */}
+            {/* 3월 - 1차 출시 */}
             <div className="bg-black text-white border border-black rounded-xl p-6">
               <div className="flex items-center gap-4 mb-6">
                 <div className="w-14 h-14 rounded-full bg-white text-black flex items-center justify-center font-bold text-lg">
-                  4/1
+                  3월
                 </div>
                 <div>
-                  <h3 className="text-2xl font-bold">제품 출시</h3>
+                  <h3 className="text-2xl font-bold">1차 출시</h3>
                   <p className="text-base text-neutral-300">D-Day</p>
                 </div>
               </div>
@@ -950,33 +1005,98 @@ export default function Home() {
               </ul>
             </div>
 
-            {/* 5월~ */}
+            {/* 4-6월 - 기능 확장 1단계 */}
             <div className="bg-white border border-neutral-200 rounded-xl p-6 hover:border-black transition-colors">
               <div className="flex items-center gap-4 mb-6">
                 <div className="w-14 h-14 rounded-full border-2 border-black flex items-center justify-center font-bold text-lg">
-                  5월~
+                  4-6월
                 </div>
                 <div>
-                  <h3 className="text-2xl font-bold">기능 확장</h3>
-                  <p className="text-base text-neutral-500">지속 개선</p>
+                  <h3 className="text-2xl font-bold">확장 1단계</h3>
+                  <p className="text-base text-neutral-500">안정화</p>
                 </div>
               </div>
               <ul className="space-y-3 text-base">
                 <li className="flex items-start gap-2">
                   <ArrowRight size={16} className="flex-shrink-0 mt-0.5" />
-                  게이미피케이션 시스템
+                  커뮤니티 기능
                 </li>
                 <li className="flex items-start gap-2">
                   <ArrowRight size={16} className="flex-shrink-0 mt-0.5" />
-                  3D 아바타 도입
+                  콘텐츠 다양화
                 </li>
                 <li className="flex items-start gap-2">
                   <ArrowRight size={16} className="flex-shrink-0 mt-0.5" />
-                  소셜/궁합 기능
+                  피드백 반영
                 </li>
                 <li className="flex items-start gap-2">
                   <ArrowRight size={16} className="flex-shrink-0 mt-0.5" />
-                  메타버스 체험
+                  안정화 및 최적화
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          {/* 하단 2개 카드 */}
+          <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+            {/* 7월 - 대규모 업데이트 */}
+            <div className="bg-black text-white border border-black rounded-xl p-6">
+              <div className="flex items-center gap-4 mb-6">
+                <div className="w-14 h-14 rounded-full bg-white text-black flex items-center justify-center font-bold text-lg">
+                  7월
+                </div>
+                <div>
+                  <h3 className="text-2xl font-bold">대규모 업데이트</h3>
+                  <p className="text-base text-neutral-300">확장 2단계</p>
+                </div>
+              </div>
+              <ul className="space-y-3 text-base">
+                <li className="flex items-start gap-2">
+                  <ArrowRight size={16} className="flex-shrink-0 mt-0.5" />
+                  프리미엄 구독 모델
+                </li>
+                <li className="flex items-start gap-2">
+                  <ArrowRight size={16} className="flex-shrink-0 mt-0.5" />
+                  3D 아바타 시스템
+                </li>
+                <li className="flex items-start gap-2">
+                  <ArrowRight size={16} className="flex-shrink-0 mt-0.5" />
+                  게이미피케이션 도입
+                </li>
+                <li className="flex items-start gap-2">
+                  <ArrowRight size={16} className="flex-shrink-0 mt-0.5" />
+                  소셜/궁합 기능 강화
+                </li>
+              </ul>
+            </div>
+
+            {/* 하반기 - 생태계 확장 */}
+            <div className="bg-white border border-neutral-200 rounded-xl p-6 hover:border-black transition-colors">
+              <div className="flex items-center gap-4 mb-6">
+                <div className="w-14 h-14 rounded-full border-2 border-black flex items-center justify-center font-bold text-lg text-sm">
+                  하반기
+                </div>
+                <div>
+                  <h3 className="text-2xl font-bold">생태계 확장</h3>
+                  <p className="text-base text-neutral-500">8-12월</p>
+                </div>
+              </div>
+              <ul className="space-y-3 text-base">
+                <li className="flex items-start gap-2">
+                  <ArrowRight size={16} className="flex-shrink-0 mt-0.5" />
+                  메타버스 환경 설계
+                </li>
+                <li className="flex items-start gap-2">
+                  <ArrowRight size={16} className="flex-shrink-0 mt-0.5" />
+                  외부 파트너십 구축
+                </li>
+                <li className="flex items-start gap-2">
+                  <ArrowRight size={16} className="flex-shrink-0 mt-0.5" />
+                  글로벌 진출 준비
+                </li>
+                <li className="flex items-start gap-2">
+                  <ArrowRight size={16} className="flex-shrink-0 mt-0.5" />
+                  2년차 확장 기반
                 </li>
               </ul>
             </div>
@@ -1023,7 +1143,7 @@ export default function Home() {
             </div>
             <div className="p-8 bg-black text-white rounded-xl">
               <p className="text-xl opacity-70 mb-3">우리의 혁신</p>
-              <p className="text-4xl font-bold">메타버스</p>
+              <p className="text-4xl font-bold">DITTO</p>
             </div>
           </div>
 
@@ -1032,6 +1152,213 @@ export default function Home() {
               "운세를 읽는 것에서
               <br />
               사는 것으로"
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Metaverse Insight Section 1 - Timeline */}
+      <section id="metaverse-insight" className="min-h-screen py-16 px-6 border-t border-neutral-200 bg-neutral-900 text-white flex items-center">
+        <div className="max-w-6xl mx-auto w-full">
+          <div className="mb-16">
+            <p className="text-base font-medium text-neutral-400 mb-4 tracking-widest">INSIGHT</p>
+            <h2 className="text-headline mb-6">
+              메타버스, 어디로 가는가
+            </h2>
+            <p className="text-xl text-neutral-400 max-w-3xl">
+              2027년 스마트글래스 대중화를 기점으로 메타버스는 새로운 국면에 진입합니다.
+            </p>
+          </div>
+
+          {/* Timeline - 2x2 Grid with larger content */}
+          <div className="grid md:grid-cols-2 gap-8 mb-16">
+            <div className="border border-neutral-700 rounded-2xl p-8 bg-neutral-800">
+              <div className="text-5xl font-bold mb-3">2026</div>
+              <div className="text-lg text-neutral-400 mb-6">기술 기반 확립</div>
+              <ul className="space-y-3 text-lg text-neutral-300">
+                <li className="flex items-start gap-3">
+                  <ArrowRight size={20} className="flex-shrink-0 mt-1" />
+                  <span>AI 코치 + LLM 대화 시스템</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <ArrowRight size={20} className="flex-shrink-0 mt-1" />
+                  <span>정밀 만세력 엔진 구축</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <ArrowRight size={20} className="flex-shrink-0 mt-1" />
+                  <span>실시간 Grounding 운세</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <ArrowRight size={20} className="flex-shrink-0 mt-1" />
+                  <span>모바일 앱 출시</span>
+                </li>
+              </ul>
+            </div>
+            <div className="border border-neutral-700 rounded-2xl p-8 bg-neutral-800">
+              <div className="text-4xl font-bold mb-3">2027 상반기</div>
+              <div className="text-lg text-neutral-400 mb-6">생태계 확장</div>
+              <ul className="space-y-3 text-lg text-neutral-300">
+                <li className="flex items-start gap-3">
+                  <ArrowRight size={20} className="flex-shrink-0 mt-1" />
+                  <span>크리에이터 SDK 공개</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <ArrowRight size={20} className="flex-shrink-0 mt-1" />
+                  <span>디지털 휴먼 AI 고도화</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <ArrowRight size={20} className="flex-shrink-0 mt-1" />
+                  <span>AR 기능 도입</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <ArrowRight size={20} className="flex-shrink-0 mt-1" />
+                  <span>글로벌 파트너십 확대</span>
+                </li>
+              </ul>
+            </div>
+            <div className="border-4 border-white rounded-2xl p-8 bg-white text-black">
+              <div className="text-4xl font-bold mb-3">2027 하반기</div>
+              <div className="text-lg text-neutral-500 mb-6">메타버스 통합 — 전환점</div>
+              <ul className="space-y-3 text-lg text-neutral-700">
+                <li className="flex items-start gap-3">
+                  <ArrowRight size={20} className="flex-shrink-0 mt-1" />
+                  <span><strong>스마트글래스 최적화</strong></span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <ArrowRight size={20} className="flex-shrink-0 mt-1" />
+                  <span><strong>메타버스 커뮤니티 오픈</strong></span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <ArrowRight size={20} className="flex-shrink-0 mt-1" />
+                  <span><strong>가상 공간 커머스</strong></span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <ArrowRight size={20} className="flex-shrink-0 mt-1" />
+                  <span><strong>운세 라운지 런칭</strong></span>
+                </li>
+              </ul>
+            </div>
+            <div className="border border-neutral-700 rounded-2xl p-8 bg-neutral-800">
+              <div className="text-5xl font-bold mb-3">2028+</div>
+              <div className="text-lg text-neutral-400 mb-6">시장 선도</div>
+              <ul className="space-y-3 text-lg text-neutral-300">
+                <li className="flex items-start gap-3">
+                  <ArrowRight size={20} className="flex-shrink-0 mt-1" />
+                  <span>메타버스 경제 생태계</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <ArrowRight size={20} className="flex-shrink-0 mt-1" />
+                  <span>가상 점술사 직업군</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <ArrowRight size={20} className="flex-shrink-0 mt-1" />
+                  <span>산업 융합 확대</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <ArrowRight size={20} className="flex-shrink-0 mt-1" />
+                  <span>글로벌 플랫폼화</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          {/* Why 2027 */}
+          <div className="bg-neutral-800 rounded-2xl p-10 border border-neutral-700">
+            <h3 className="text-3xl font-bold mb-8">왜 2027년 하반기가 전환점인가?</h3>
+            <div className="grid md:grid-cols-3 gap-8">
+              <div>
+                <h4 className="text-xl font-bold mb-4 text-white">스마트글래스 대중화</h4>
+                <p className="text-neutral-300 text-lg leading-relaxed">
+                  Apple Vision Pro 이후 경량 디바이스가 대중 시장에 진입.
+                  메타버스는 <strong className="text-white">"게임"에서 "일상"</strong>으로 전환됩니다.
+                </p>
+              </div>
+              <div>
+                <h4 className="text-xl font-bold mb-4 text-white">AR 오버레이 시대</h4>
+                <p className="text-neutral-300 text-lg leading-relaxed">
+                  현실 위에 정보가 자연스럽게 표시되는 AR 오버레이가
+                  <strong className="text-white"> 새로운 UX 표준</strong>이 됩니다.
+                </p>
+              </div>
+              <div>
+                <h4 className="text-xl font-bold mb-4 text-white">공간 컴퓨팅</h4>
+                <p className="text-neutral-300 text-lg leading-relaxed">
+                  2D 스크린을 넘어 <strong className="text-white">3D 공간에서의 상호작용</strong>이
+                  일상화됩니다.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Metaverse Insight Section 2 - DITTO's Preparation */}
+      <section id="metaverse-insight-2" className="min-h-screen py-16 px-6 border-t border-neutral-800 bg-neutral-900 text-white flex items-center">
+        <div className="max-w-6xl mx-auto w-full">
+          <div className="mb-12">
+            <p className="text-base font-medium text-neutral-400 mb-4 tracking-widest">INSIGHT</p>
+            <h2 className="text-headline mb-6">
+              DITTO의 준비
+            </h2>
+          </div>
+
+          {/* DITTO's Preparation - 3 columns */}
+          <div className="grid md:grid-cols-3 gap-8 mb-16">
+            <div className="bg-white text-black rounded-2xl p-8">
+              <div className="text-4xl mb-4">📱 → 🥽</div>
+              <h4 className="text-2xl font-bold mb-4">단계적 전환 설계</h4>
+              <p className="text-lg text-neutral-600 leading-relaxed">
+                모바일 → 웹 → AR → 메타버스로 <strong>자연스러운 사용자 경험 전환 경로</strong>를 설계합니다.
+              </p>
+            </div>
+            <div className="bg-white text-black rounded-2xl p-8">
+              <div className="text-4xl mb-4">🧬</div>
+              <h4 className="text-2xl font-bold mb-4">3D 아바타 시스템</h4>
+              <p className="text-lg text-neutral-600 leading-relaxed">
+                사주 기반 <strong>디지털 DNA 아바타</strong>를 메타버스 환경에 즉시 적용 가능하도록 준비합니다.
+              </p>
+            </div>
+            <div className="bg-white text-black rounded-2xl p-8">
+              <div className="text-4xl mb-4">🏛️</div>
+              <h4 className="text-2xl font-bold mb-4">운세 라운지</h4>
+              <p className="text-lg text-neutral-600 leading-relaxed">
+                같은 운명을 공유하는 사람들의 <strong>"운세 라운지"</strong>를 가상 공간으로 확장합니다.
+              </p>
+            </div>
+          </div>
+
+          {/* Industry Fusion */}
+          <div className="mb-16">
+            <h3 className="text-3xl font-bold mb-8">메타버스 시대의 산업 융합</h3>
+            <div className="grid md:grid-cols-5 gap-6">
+              <div className="text-center p-8 bg-neutral-800 rounded-2xl border border-neutral-700">
+                <p className="text-2xl font-bold mb-3">교육</p>
+                <p className="text-base text-neutral-400">진로 탐색<br/>적성 교육</p>
+              </div>
+              <div className="text-center p-8 bg-neutral-800 rounded-2xl border border-neutral-700">
+                <p className="text-2xl font-bold mb-3">헬스케어</p>
+                <p className="text-base text-neutral-400">정신건강<br/>웰빙 코칭</p>
+              </div>
+              <div className="text-center p-8 bg-neutral-800 rounded-2xl border border-neutral-700">
+                <p className="text-2xl font-bold mb-3">엔터테인먼트</p>
+                <p className="text-base text-neutral-400">스토리 게임<br/>인터랙티브</p>
+              </div>
+              <div className="text-center p-8 bg-neutral-800 rounded-2xl border border-neutral-700">
+                <p className="text-2xl font-bold mb-3">커머스</p>
+                <p className="text-base text-neutral-400">맞춤 추천<br/>가상 굿즈</p>
+              </div>
+              <div className="text-center p-8 bg-neutral-800 rounded-2xl border border-neutral-700">
+                <p className="text-2xl font-bold mb-3">HR/채용</p>
+                <p className="text-base text-neutral-400">팀 궁합<br/>조직 컨설팅</p>
+              </div>
+            </div>
+          </div>
+
+          {/* Vision Statement */}
+          <div className="text-center py-12 border-4 border-white rounded-3xl">
+            <p className="text-4xl font-bold leading-relaxed">
+              "메타버스 시대의 첫 번째<br/>
+              <span className="text-5xl">운세/인생설계 플랫폼</span>"
             </p>
           </div>
         </div>
