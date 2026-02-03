@@ -47,8 +47,8 @@ export default function SectionIndicator() {
   const current = sections.find((s) => s.id === currentSection);
 
   return (
-    <div className="fixed top-20 left-20 z-50 text-left">
-      <h2 className="text-headline font-bold tracking-tight leading-none">
+    <div className="fixed top-6 left-6 z-50 text-left">
+      <h2 className="text-2xl font-bold tracking-tight leading-none">
         {current?.label}
       </h2>
     </div>
