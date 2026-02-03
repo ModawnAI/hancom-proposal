@@ -273,11 +273,11 @@ DITTO의 비전은 명확합니다.
 function formatScript(script: string): string {
   return script
     // Stage directions: (text) → [text] in amber italic
-    .replace(/\(([^)]+)\)/g, '<span class="text-amber-400/70 italic text-base">[$1]</span>')
+    .replace(/\(([^)]+)\)/g, '<span style="color: #fbbf24; opacity: 0.7; font-style: italic; font-size: 0.9em;">[$1]</span>')
     // Bold: **text** → yellow bold
-    .replace(/\*\*([^*]+)\*\*/g, '<span class="text-amber-300 font-semibold">$1</span>')
+    .replace(/\*\*([^*]+)\*\*/g, '<span style="color: #fcd34d; font-weight: 600;">$1</span>')
     // Pause: / → bullet marker
-    .replace(/ \/ /g, ' <span class="text-neutral-500 mx-1">•</span> ');
+    .replace(/ \/ /g, ' <span style="color: #737373; margin: 0 4px;">•</span> ');
 }
 
 export default function PresenterPage() {
