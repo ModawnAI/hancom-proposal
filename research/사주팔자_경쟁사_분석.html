@@ -1,0 +1,1971 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI 인생설계 플랫폼 - 경쟁사 심층 분석</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.2/src/bold/style.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --primary-dark: #1a1a1a;
+      --accent: #8B4513;
+      --accent-light: #A0522D;
+      --white: #FFFFFF;
+      --gray-50: #FAFAFA;
+      --gray-100: #F5F5F5;
+      --gray-200: #E5E5E5;
+      --gray-300: #D4D4D4;
+      --gray-400: #A3A3A3;
+      --gray-500: #737373;
+      --gray-600: #525252;
+      --gray-700: #404040;
+      --gray-800: #262626;
+      --gray-900: #171717;
+      --gold: #D4AF37;
+      --red: #DC143C;
+      --green: #228B22;
+      --blue: #1E90FF;
+    }
+
+    body {
+      font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: #1a1a1a;
+      color: var(--primary-dark);
+      line-height: 1.6;
+      overflow: hidden;
+    }
+
+    .slides-wrapper {
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .slides-container {
+      position: relative;
+      width: 100%;
+      max-width: 177.78vh;
+      height: 100vh;
+      margin: 0 auto;
+    }
+
+    .slide {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: var(--white);
+      display: none;
+      flex-direction: column;
+      padding: 2vh 3vw;
+      overflow: hidden;
+      box-sizing: border-box;
+    }
+
+    .slide.active {
+      display: flex;
+    }
+
+    /* Cover Slide */
+    .slide-cover {
+      background: linear-gradient(135deg, #8B4513 0%, #D2691E 100%);
+      color: var(--white);
+      justify-content: space-between;
+      padding: 60px 80px;
+    }
+
+    .cover-main {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .cover-subtitle {
+      font-size: 1.5vw;
+      font-weight: 600;
+      color: rgba(255,255,255,0.9);
+      margin-bottom: 0.8vh;
+      letter-spacing: 2px;
+    }
+
+    .slide-cover h1 {
+      font-size: 4.5vw;
+      font-weight: 800;
+      line-height: 1.1;
+      margin-bottom: 1.5vh;
+      letter-spacing: -1px;
+    }
+
+    .slide-cover h2 {
+      font-size: 1.8vw;
+      font-weight: 400;
+      color: rgba(255,255,255,0.85);
+      line-height: 1.5;
+    }
+
+    .cover-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      padding-top: 2vh;
+      border-top: 1px solid rgba(255,255,255,0.3);
+    }
+
+    .cover-meta {
+      font-size: 1.2vw;
+      color: rgba(255,255,255,0.8);
+      line-height: 1.8;
+    }
+
+    /* Section Header Slide */
+    .slide-section {
+      background: var(--white);
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+
+    .section-icon {
+      font-size: 5vw;
+      color: var(--accent);
+      margin-bottom: 3vh;
+    }
+
+    .section-number-large {
+      font-size: 1.6vw;
+      font-weight: 700;
+      color: var(--accent);
+      letter-spacing: 4px;
+      margin-bottom: 2vh;
+      text-transform: uppercase;
+    }
+
+    .section-title-large {
+      font-size: 4vw;
+      font-weight: 800;
+      margin-bottom: 1.5vh;
+      color: var(--primary-dark);
+    }
+
+    .section-subtitle-large {
+      font-size: 1.7vw;
+      color: var(--gray-600);
+      max-width: 80%;
+    }
+
+    /* Content Slide */
+    .slide-content {
+      background: var(--white);
+    }
+
+    .content-header {
+      margin-bottom: 1.2vh;
+      padding-bottom: 0.6vh;
+      border-bottom: 3px solid var(--gray-200);
+    }
+
+    .content-section-num {
+      font-size: 1.2vw;
+      font-weight: 700;
+      color: var(--accent);
+      letter-spacing: 3px;
+      margin-bottom: 0.3vh;
+      text-transform: uppercase;
+    }
+
+    .content-title {
+      font-size: 2.6vw;
+      font-weight: 800;
+      color: var(--primary-dark);
+      line-height: 1.1;
+    }
+
+    .content-subtitle {
+      font-size: 1.2vw;
+      color: var(--gray-600);
+      margin-top: 0.3vh;
+    }
+
+    .content-body {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Layouts */
+    .two-column {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2vw;
+      flex: 1;
+    }
+
+    .three-column {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 1.5vw;
+      flex: 1;
+    }
+
+    /* Stats */
+    .stats-row {
+      display: flex;
+      gap: 1vw;
+      margin-bottom: 1vh;
+    }
+
+    .stat-item {
+      flex: 1;
+      background: var(--gray-100);
+      padding: 0.8vh 0.8vw;
+      border-radius: 12px;
+      text-align: center;
+      border-left: 4px solid var(--accent);
+    }
+
+    .stat-value {
+      font-size: 2.2vw;
+      font-weight: 800;
+      color: var(--accent);
+      margin-bottom: 0.2vh;
+    }
+
+    .stat-label {
+      font-size: 1vw;
+      color: var(--gray-600);
+      font-weight: 600;
+    }
+
+    /* Table */
+    .comparison-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.95vw;
+    }
+
+    .comparison-table th {
+      background: var(--accent);
+      color: var(--white);
+      padding: 0.5vh 0.5vw;
+      text-align: left;
+      font-weight: 700;
+      font-size: 1vw;
+    }
+
+    .comparison-table td {
+      padding: 0.4vh 0.5vw;
+      border-bottom: 1px solid var(--gray-200);
+    }
+
+    .comparison-table tr:hover {
+      background: var(--gray-50);
+    }
+
+    .comparison-table .header-col {
+      font-weight: 700;
+      color: var(--primary-dark);
+      background: var(--gray-100);
+    }
+
+    /* Key Points */
+    .key-points-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.6vw;
+      margin-bottom: 0.8vh;
+    }
+
+    .key-point-card {
+      background: var(--gray-100);
+      padding: 0.6vh 0.8vw;
+      border-radius: 10px;
+      border-left: 4px solid var(--accent);
+    }
+
+    .key-point-title {
+      font-size: 1.1vw;
+      font-weight: 700;
+      color: var(--primary-dark);
+      margin-bottom: 0.2vh;
+    }
+
+    .key-point-text {
+      font-size: 0.95vw;
+      color: var(--gray-600);
+      line-height: 1.4;
+    }
+
+    /* Highlight Box */
+    .highlight-box {
+      background: linear-gradient(135deg, var(--accent) 0%, var(--accent-light) 100%);
+      color: var(--white);
+      padding: 0.8vh 1vw;
+      border-radius: 12px;
+      margin: 0.5vh 0;
+    }
+
+    .highlight-title {
+      font-size: 1.2vw;
+      font-weight: 700;
+      margin-bottom: 0.3vh;
+    }
+
+    .highlight-text {
+      font-size: 1vw;
+      line-height: 1.5;
+    }
+
+    /* Feature List */
+    .feature-list {
+      list-style: none;
+      font-size: 1vw;
+    }
+
+    .feature-list li {
+      padding: 0.4vh 0;
+      display: flex;
+      align-items: center;
+      gap: 0.4vw;
+      border-bottom: 1px solid var(--gray-200);
+    }
+
+    .feature-list li:last-child {
+      border-bottom: none;
+    }
+
+    .feature-list i {
+      color: var(--accent);
+      font-size: 1vw;
+    }
+
+    /* SWOT Grid */
+    .swot-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.6vw;
+    }
+
+    .swot-box {
+      padding: 0.6vh 0.8vw;
+      border-radius: 10px;
+    }
+
+    .swot-box.strengths {
+      background: rgba(34, 139, 34, 0.1);
+      border: 2px solid var(--green);
+    }
+
+    .swot-box.weaknesses {
+      background: rgba(220, 20, 60, 0.1);
+      border: 2px solid var(--red);
+    }
+
+    .swot-box.opportunities {
+      background: rgba(30, 144, 255, 0.1);
+      border: 2px solid var(--blue);
+    }
+
+    .swot-box.threats {
+      background: rgba(139, 69, 19, 0.1);
+      border: 2px solid var(--accent);
+    }
+
+    .swot-title {
+      font-size: 1.2vw;
+      font-weight: 700;
+      margin-bottom: 0.3vh;
+      display: flex;
+      align-items: center;
+      gap: 0.3vw;
+    }
+
+    .swot-list {
+      list-style: none;
+      font-size: 0.9vw;
+      line-height: 1.5;
+    }
+
+    .swot-list li {
+      padding: 0.15vh 0;
+      padding-left: 0.8vw;
+      position: relative;
+    }
+
+    .swot-list li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      font-weight: 700;
+    }
+
+    /* App Card */
+    .app-card {
+      background: var(--gray-50);
+      border-radius: 12px;
+      padding: 0.8vh 0.8vw;
+      border: 2px solid var(--gray-200);
+    }
+
+    .app-card.highlight {
+      border-color: var(--accent);
+      background: linear-gradient(135deg, rgba(139, 69, 19, 0.05) 0%, rgba(210, 105, 30, 0.05) 100%);
+    }
+
+    .app-card-header {
+      display: flex;
+      align-items: center;
+      gap: 0.6vw;
+      margin-bottom: 0.5vh;
+    }
+
+    .app-card-icon {
+      font-size: 1.8vw;
+    }
+
+    .app-card-title {
+      font-size: 1.3vw;
+      font-weight: 800;
+      color: var(--primary-dark);
+    }
+
+    .app-card-subtitle {
+      font-size: 0.9vw;
+      color: var(--gray-500);
+    }
+
+    /* Timeline */
+    .timeline {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.8vh 0;
+    }
+
+    .timeline-item {
+      flex: 1;
+      text-align: center;
+      position: relative;
+    }
+
+    .timeline-item::after {
+      content: "";
+      position: absolute;
+      top: 1.2vw;
+      right: -50%;
+      width: 100%;
+      height: 3px;
+      background: var(--gray-300);
+    }
+
+    .timeline-item:last-child::after {
+      display: none;
+    }
+
+    .timeline-dot {
+      width: 2.4vw;
+      height: 2.4vw;
+      border-radius: 50%;
+      background: var(--accent);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 0.4vh;
+      font-weight: 700;
+      font-size: 0.9vw;
+      position: relative;
+      z-index: 1;
+    }
+
+    .timeline-label {
+      font-size: 1vw;
+      font-weight: 700;
+      color: var(--primary-dark);
+    }
+
+    .timeline-desc {
+      font-size: 0.85vw;
+      color: var(--gray-500);
+    }
+
+    /* USP Box */
+    .usp-box {
+      background: linear-gradient(135deg, #8B4513 0%, #D2691E 100%);
+      color: white;
+      padding: 1.2vh 1.5vw;
+      border-radius: 16px;
+      text-align: center;
+    }
+
+    .usp-title {
+      font-size: 1.8vw;
+      font-weight: 800;
+      margin-bottom: 0.6vh;
+    }
+
+    .usp-formula {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.8vw;
+      font-size: 1.1vw;
+      margin-bottom: 0.5vh;
+    }
+
+    .usp-element {
+      background: rgba(255,255,255,0.2);
+      padding: 0.4vh 0.8vw;
+      border-radius: 8px;
+      font-weight: 600;
+    }
+
+    /* Code Block */
+    .code-block {
+      background: #1e1e1e;
+      color: #d4d4d4;
+      padding: 0.8vh 1vw;
+      border-radius: 8px;
+      font-family: monospace;
+      font-size: 0.85vw;
+      line-height: 1.5;
+    }
+
+    /* Navigation */
+    .nav-hint {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: rgba(0,0,0,0.7);
+      color: white;
+      padding: 8px 16px;
+      border-radius: 8px;
+      font-size: 12px;
+      z-index: 1000;
+    }
+
+    .slide-counter {
+      position: fixed;
+      bottom: 20px;
+      left: 20px;
+      background: rgba(0,0,0,0.7);
+      color: white;
+      padding: 8px 16px;
+      border-radius: 8px;
+      font-size: 12px;
+      z-index: 1000;
+    }
+  </style>
+</head>
+<body>
+  <div class="slides-wrapper">
+    <div class="slides-container" id="slidesContainer">
+
+      <!-- ==================== PART 0: 표지 & 핵심 발견 ==================== -->
+
+      <!-- Slide 0: Cover -->
+      <div class="slide slide-cover active" data-slide="0">
+        <div class="cover-main">
+          <div class="cover-subtitle">🔮 AI 기반 인생설계 플랫폼</div>
+          <h1>경쟁사 심층 분석 및<br>차별화 전략</h1>
+          <h2>사주 × AI 코칭 × 게이미피케이션 × 실시간 개인화<br>블루오션 시장 진입 전략</h2>
+        </div>
+        <div class="cover-bottom">
+          <div class="cover-meta">
+            전략 기획서<br>
+            2026년 2월
+          </div>
+          <div class="cover-meta" style="text-align: right;">
+            국내 4개 + 해외 11개 앱 분석<br>
+            기술 · 비즈니스 · UX 심층 분석
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 1: 핵심 발견 -->
+      <div class="slide slide-content" data-slide="1">
+        <div class="content-header">
+          <div class="content-section-num">Executive Summary</div>
+          <div class="content-title">🎯 핵심 발견 사항</div>
+        </div>
+        <div class="content-body">
+          <div class="usp-box" style="margin-bottom: 1vh;">
+            <div class="usp-title">운세 + 인생설계 완전 결합 사례 = 없음 (블루오션)</div>
+            <div class="usp-formula">
+              <span class="usp-element">🔮 WHY (사주)</span>
+              <span style="font-size: 1.5vw;">+</span>
+              <span class="usp-element">📋 WHAT (플래닝)</span>
+              <span style="font-size: 1.5vw;">+</span>
+              <span class="usp-element">🎮 FUN (게임)</span>
+              <span style="font-size: 1.5vw;">=</span>
+              <span class="usp-element" style="background: var(--gold);">🚀 독점적 포지션</span>
+            </div>
+          </div>
+
+          <div class="three-column">
+            <div class="app-card">
+              <div class="app-card-header">
+                <div class="app-card-icon">🇰🇷</div>
+                <div>
+                  <div class="app-card-title">국내 운세앱</div>
+                  <div class="app-card-subtitle">점신/포스텔러/청월당/헬로봇</div>
+                </div>
+              </div>
+              <ul class="feature-list" style="font-size: 0.9vw;">
+                <li>❌ 모두 <strong>LLM 대화형 상담 없음</strong></li>
+                <li>❌ <strong>인생 설계 기능 전무</strong></li>
+                <li>❌ 정적 해석, 학습 AI 없음</li>
+                <li>❌ 만세력 시(時) 단위 한계</li>
+              </ul>
+            </div>
+            <div class="app-card">
+              <div class="app-card-header">
+                <div class="app-card-icon">🌍</div>
+                <div>
+                  <div class="app-card-title">해외 점성술앱</div>
+                  <div class="app-card-subtitle">Co-Star/Pattern/Sanctuary</div>
+                </div>
+              </div>
+              <ul class="feature-list" style="font-size: 0.9vw;">
+                <li>✅ 소셜 기능 강점 (바이럴)</li>
+                <li>❌ <strong>행동 가이드/플래닝 없음</strong></li>
+                <li>❌ 인사이트만 제공</li>
+                <li>△ 서양 점성술 기반</li>
+              </ul>
+            </div>
+            <div class="app-card">
+              <div class="app-card-header">
+                <div class="app-card-icon">🤖</div>
+                <div>
+                  <div class="app-card-title">AI 코칭앱</div>
+                  <div class="app-card-subtitle">Replika/Fabulous/Coach.me</div>
+                </div>
+              </div>
+              <ul class="feature-list" style="font-size: 0.9vw;">
+                <li>✅ 습관/목표 추적 강점</li>
+                <li>❌ <strong>운명/타이밍 개념 없음</strong></li>
+                <li>❌ "왜 이 목표?" 부재</li>
+                <li>❌ 초월적 의미/서사 없음</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="highlight-box" style="margin-top: 0.8vh;">
+            <div class="highlight-title">💡 우리의 기회</div>
+            <div class="highlight-text">
+              사주의 <strong>타이밍/적성 분석</strong> + AI의 <strong>대화형 코칭</strong> + 게임의 <strong>지속성</strong> = 
+              <strong>"당신의 사주가 알려주는 인생 설계 게임"</strong>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 2: 목차 -->
+      <div class="slide slide-content" data-slide="2" style="justify-content: center; padding: 3vh 5vw;">
+        <div style="font-size: 3.5vw; font-weight: 800; color: var(--accent); margin-bottom: 2vh; text-align: center;">📋 분석 구성</div>
+        <div class="two-column" style="gap: 4vw;">
+          <div style="display: flex; flex-direction: column; gap: 1.2vh;">
+            <div style="font-size: 1.6vw; font-weight: 700;"><span style="color: var(--accent);">Part 1</span> 우리 서비스 비전</div>
+            <div style="font-size: 1.1vw; color: var(--gray-600); margin-left: 2vw;">인생설계 시스템, 핵심 기술 차별화</div>
+            
+            <div style="font-size: 1.6vw; font-weight: 700; margin-top: 0.5vh;"><span style="color: var(--accent);">Part 2</span> 국내 경쟁사 분석</div>
+            <div style="font-size: 1.1vw; color: var(--gray-600); margin-left: 2vw;">점신, 포스텔러, 청월당, 헬로봇 (AI 관점)</div>
+            
+            <div style="font-size: 1.6vw; font-weight: 700; margin-top: 0.5vh;"><span style="color: var(--accent);">Part 3</span> 해외 앱 분석</div>
+            <div style="font-size: 1.1vw; color: var(--gray-600); margin-left: 2vw;">Co-Star, Pattern, Replika, Fabulous 등 11개</div>
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 1.2vh;">
+            <div style="font-size: 1.6vw; font-weight: 700;"><span style="color: var(--accent);">Part 4</span> 게이미피케이션 전략</div>
+            <div style="font-size: 1.1vw; color: var(--gray-600); margin-left: 2vw;">Duolingo 공식, 인생 RPG, 캐릭터 코칭</div>
+            
+            <div style="font-size: 1.6vw; font-weight: 700; margin-top: 0.5vh;"><span style="color: var(--accent);">Part 5</span> 핵심 기술</div>
+            <div style="font-size: 1.1vw; color: var(--gray-600); margin-left: 2vw;">Google Grounding API, 메타버스 로드맵</div>
+            
+            <div style="font-size: 1.6vw; font-weight: 700; margin-top: 0.5vh;"><span style="color: var(--accent);">Part 6</span> 비즈니스 모델 & 결론</div>
+            <div style="font-size: 1.1vw; color: var(--gray-600); margin-left: 2vw;">실행 전략, 로드맵, 차별화 요약</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ==================== PART 1: 우리 서비스 비전 ==================== -->
+
+      <!-- Slide 3: Section -->
+      <div class="slide slide-section" data-slide="3">
+        <div class="section-icon"><i class="ph-bold ph-rocket-launch"></i></div>
+        <div class="section-number-large">Part 1</div>
+        <div class="section-title-large">우리 서비스 비전</div>
+        <div class="section-subtitle-large">단순 운세앱이 아닌, AI 기반 인생설계 플랫폼</div>
+      </div>
+
+      <!-- Slide 4: 서비스 핵심 구조 -->
+      <div class="slide slide-content" data-slide="4">
+        <div class="content-header">
+          <div class="content-section-num">Our Vision</div>
+          <div class="content-title">서비스 핵심 구조</div>
+          <div class="content-subtitle">사주 + 점성술 + MBTI + AI 코칭 + 인생설계 통합</div>
+        </div>
+        <div class="content-body">
+          <div class="two-column">
+            <div>
+              <h3 style="font-size: 1.4vw; margin-bottom: 0.8vh; color: var(--accent);">📊 다중 성향 분석</h3>
+              <div class="key-point-card" style="margin-bottom: 0.5vh;">
+                <div class="key-point-title">사주팔자 (동양)</div>
+                <div class="key-point-text">생년월일시 기반 운명/적성/타이밍 분석</div>
+              </div>
+              <div class="key-point-card" style="margin-bottom: 0.5vh;">
+                <div class="key-point-title">점성술 (서양)</div>
+                <div class="key-point-text">별자리/행성 배치 기반 성격/관계 분석</div>
+              </div>
+              <div class="key-point-card" style="margin-bottom: 0.5vh;">
+                <div class="key-point-title">MBTI/에니어그램</div>
+                <div class="key-point-text">심리학 기반 성격 유형 통합</div>
+              </div>
+              <div class="key-point-card" style="border-left-color: var(--gold);">
+                <div class="key-point-title">🆕 통합 분석 엔진</div>
+                <div class="key-point-text">여러 체계를 융합한 종합 인사이트 도출</div>
+              </div>
+            </div>
+            <div>
+              <h3 style="font-size: 1.4vw; margin-bottom: 0.8vh; color: var(--accent);">🎯 인생 설계 시스템</h3>
+              <div class="timeline">
+                <div class="timeline-item">
+                  <div class="timeline-dot">🌟</div>
+                  <div class="timeline-label">인생</div>
+                  <div class="timeline-desc">대운 기반</div>
+                </div>
+                <div class="timeline-item">
+                  <div class="timeline-dot">10Y</div>
+                  <div class="timeline-label">10년</div>
+                  <div class="timeline-desc">대운 시즌</div>
+                </div>
+                <div class="timeline-item">
+                  <div class="timeline-dot">1Y</div>
+                  <div class="timeline-label">1년</div>
+                  <div class="timeline-desc">세운 목표</div>
+                </div>
+                <div class="timeline-item">
+                  <div class="timeline-dot">1M</div>
+                  <div class="timeline-label">1달</div>
+                  <div class="timeline-desc">월운 계획</div>
+                </div>
+                <div class="timeline-item">
+                  <div class="timeline-dot">1D</div>
+                  <div class="timeline-label">하루</div>
+                  <div class="timeline-desc">일진 액션</div>
+                </div>
+              </div>
+              <div class="highlight-box" style="margin-top: 0.8vh;">
+                <div class="highlight-title">핵심 차별화</div>
+                <div class="highlight-text">
+                  운세 → 목표 → 액션 → 추적 → 피드백<br>
+                  <strong>"오늘 뭐하지?"</strong>의 답을 AI가 실시간으로 제공
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 5: 핵심 기술 차별화 -->
+      <div class="slide slide-content" data-slide="5">
+        <div class="content-header">
+          <div class="content-section-num">Our Vision</div>
+          <div class="content-title">🔥 핵심 기술 차별화</div>
+          <div class="content-subtitle">Google Grounding + 메타버스 = 살아있는 운세</div>
+        </div>
+        <div class="content-body">
+          <div class="two-column">
+            <div>
+              <h3 style="font-size: 1.3vw; margin-bottom: 0.6vh; color: var(--accent);">🌐 실시간 Google Grounding</h3>
+              <div class="code-block" style="margin-bottom: 0.6vh;">
+                <div style="color: #808080; margin-bottom: 0.3vh;">❌ 기존 운세앱 (정적)</div>
+                <div>"당신은 재성이 발달하여 금전운이 좋습니다."</div>
+                <div style="color: #808080; font-size: 0.8vw;">→ 언제 봐도 같은 내용</div>
+              </div>
+              <div style="background: linear-gradient(135deg, #228B22 0%, #32CD32 100%); color: white; padding: 0.6vh 0.8vw; border-radius: 8px; font-size: 0.9vw;">
+                <div style="opacity: 0.8; margin-bottom: 0.3vh;">✅ 우리 앱 (Grounding 적용)</div>
+                <div>"오늘 서울 날씨 맑음 ☀️ + 삼성전자 3% 상승 (출처: 네이버금융)<br>
+                재성이 발달한 당신, 투자 검토 추천! 단, 오후 3시 이후는 피하세요."</div>
+                <div style="opacity: 0.7; font-size: 0.8vw; margin-top: 0.2vh;">→ 실시간 맥락 + 구체적 행동 + 출처</div>
+              </div>
+            </div>
+            <div>
+              <h3 style="font-size: 1.3vw; margin-bottom: 0.6vh; color: var(--accent);">🌌 메타버스 로드맵</h3>
+              <div class="key-point-card" style="margin-bottom: 0.4vh;">
+                <div class="key-point-title">Phase 1: 2D/2.5D 아바타 (6주)</div>
+                <div class="key-point-text">사주 기반 캐릭터 자동 생성, 오행 테마</div>
+              </div>
+              <div class="key-point-card" style="margin-bottom: 0.4vh;">
+                <div class="key-point-title">Phase 2: AR 타로/오행 (3개월)</div>
+                <div class="key-point-text">카메라 활용 AR 카드, 3D 아바타</div>
+              </div>
+              <div class="key-point-card">
+                <div class="key-point-title">Phase 3: 가상 점술 공간 (6개월+)</div>
+                <div class="key-point-text">실시간 3D 점집, 멀티플레이어 소셜</div>
+              </div>
+              <div style="margin-top: 0.5vh; padding: 0.4vh 0.6vw; background: var(--gray-100); border-radius: 6px; font-size: 0.9vw;">
+                <strong>기술:</strong> Unity + AR Foundation + Avatar SDK
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ==================== PART 2: 국내 경쟁사 ==================== -->
+
+      <!-- Slide 6: Section -->
+      <div class="slide slide-section" data-slide="6">
+        <div class="section-icon"><i class="ph-bold ph-flag"></i></div>
+        <div class="section-number-large">Part 2</div>
+        <div class="section-title-large">국내 경쟁사 분석</div>
+        <div class="section-subtitle-large">점신 · 포스텔러 · 청월당 · 헬로봇 (AI/기술 관점)</div>
+      </div>
+
+      <!-- Slide 7: 4대 앱 비교 -->
+      <div class="slide slide-content" data-slide="7">
+        <div class="content-header">
+          <div class="content-section-num">국내 경쟁사</div>
+          <div class="content-title">4대 앱 AI/기술 비교</div>
+        </div>
+        <div class="content-body">
+          <table class="comparison-table">
+            <thead>
+              <tr>
+                <th>항목</th>
+                <th>점신 (테크랩스)</th>
+                <th>포스텔러 (운칠기삼)</th>
+                <th>청월당 (로켓AI)</th>
+                <th>헬로봇 (매직앱스)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="header-col">누적 다운로드</td>
+                <td><strong>1,900만+</strong></td>
+                <td>900만+</td>
+                <td>300만+ (GPT Store)</td>
+                <td>600만+</td>
+              </tr>
+              <tr>
+                <td class="header-col">MAU</td>
+                <td><strong>95만</strong></td>
+                <td>57만</td>
+                <td>-</td>
+                <td>80만 (추정)</td>
+              </tr>
+              <tr>
+                <td class="header-col">AI 모델</td>
+                <td>규칙+ML (솔트룩스 협력)</td>
+                <td>규칙+ML (FAS 엔진)</td>
+                <td><strong>LLM+RAG (Llama)</strong></td>
+                <td>대화형 챗봇</td>
+              </tr>
+              <tr>
+                <td class="header-col">LLM 대화</td>
+                <td style="color: var(--red);">❌ 개발중</td>
+                <td style="color: var(--red);">❌</td>
+                <td style="color: var(--green);">✅ 핵심</td>
+                <td>⚪ 템플릿</td>
+              </tr>
+              <tr>
+                <td class="header-col">인생 설계</td>
+                <td style="color: var(--red);">❌</td>
+                <td style="color: var(--red);">❌</td>
+                <td style="color: var(--red);">❌</td>
+                <td style="color: var(--red);">❌</td>
+              </tr>
+              <tr>
+                <td class="header-col">만세력 정밀도</td>
+                <td>시(時) 단위</td>
+                <td>시(時) 단위</td>
+                <td>분(分) 단위</td>
+                <td>시(時) 단위</td>
+              </tr>
+              <tr>
+                <td class="header-col">학습 AI</td>
+                <td style="color: var(--red);">❌</td>
+                <td style="color: var(--red);">❌</td>
+                <td>⚪ 가능성</td>
+                <td>⚪ 대화 학습</td>
+              </tr>
+              <tr>
+                <td class="header-col">핵심 강점</td>
+                <td>시장 지배력, 수익성 52%</td>
+                <td>MZ 타겟, 12지신 IP</td>
+                <td>GPT Store 1위, 기술력</td>
+                <td>게이미피케이션</td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="highlight-box" style="margin-top: 0.8vh;">
+            <div class="highlight-title">💡 공통 약점 = 우리 기회</div>
+            <div class="highlight-text">
+              ❌ LLM 대화형 상담 없음 · ❌ 인생설계/목표 추적 전무 · ❌ 학습 AI 없음 · ❌ 실시간 맥락화 없음
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 8: 점신 분석 -->
+      <div class="slide slide-content" data-slide="8">
+        <div class="content-header">
+          <div class="content-section-num">국내 경쟁사</div>
+          <div class="content-title">점신 (테크랩스) - 시장 1위</div>
+        </div>
+        <div class="content-body">
+          <div class="stats-row">
+            <div class="stat-item">
+              <div class="stat-value">1,900만</div>
+              <div class="stat-label">누적 다운로드</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-value">46.5%</div>
+              <div class="stat-label">시장 점유율</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-value">52%</div>
+              <div class="stat-label">영업이익률</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-value">130억</div>
+              <div class="stat-label">인수 금액</div>
+            </div>
+          </div>
+          <div class="two-column">
+            <div>
+              <h4 style="font-size: 1.2vw; margin-bottom: 0.5vh; color: var(--accent);">기술 스택</h4>
+              <table class="comparison-table" style="font-size: 0.9vw;">
+                <tr><td class="header-col">AI 모델</td><td>규칙+ML 하이브리드 (솔트룩스 협력 중)</td></tr>
+                <tr><td class="header-col">NLP</td><td>템플릿 기반 NLG</td></tr>
+                <tr><td class="header-col">이미지</td><td>관상/손금 CNN</td></tr>
+                <tr><td class="header-col">만세력</td><td>시(時) 단위</td></tr>
+                <tr><td class="header-col">피드백 루프</td><td>❌ 없음</td></tr>
+              </table>
+            </div>
+            <div>
+              <div class="swot-grid">
+                <div class="swot-box strengths">
+                  <div class="swot-title" style="color: var(--green);">✅ 강점</div>
+                  <ul class="swot-list">
+                    <li>압도적 시장 지배력</li>
+                    <li>수익성 입증 (52%)</li>
+                    <li>전문가 400명+ 네트워크</li>
+                    <li>B2B 파트너십 (럭키버스)</li>
+                  </ul>
+                </div>
+                <div class="swot-box weaknesses">
+                  <div class="swot-title" style="color: var(--red);">❌ 우리가 넘어설 점</div>
+                  <ul class="swot-list">
+                    <li>UI/UX 노후화</li>
+                    <li>광고 과다</li>
+                    <li>정적 해석 (LLM 없음)</li>
+                    <li>인생설계 기능 부재</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 9: 포스텔러/청월당/헬로봇 -->
+      <div class="slide slide-content" data-slide="9">
+        <div class="content-header">
+          <div class="content-section-num">국내 경쟁사</div>
+          <div class="content-title">포스텔러 · 청월당 · 헬로봇</div>
+        </div>
+        <div class="content-body">
+          <div class="three-column">
+            <div class="app-card">
+              <div class="app-card-header">
+                <div class="app-card-icon">⭐</div>
+                <div>
+                  <div class="app-card-title">포스텔러</div>
+                  <div class="app-card-subtitle">MZ 감성 2위</div>
+                </div>
+              </div>
+              <div style="font-size: 0.9vw; margin-bottom: 0.5vh;">
+                <strong>MAU:</strong> 57만 | <strong>MZ:</strong> 83%
+              </div>
+              <div style="font-size: 0.85vw; color: var(--green); margin-bottom: 0.3vh;">✅ 강점</div>
+              <ul class="feature-list" style="font-size: 0.85vw;">
+                <li>12지신 캐릭터 IP</li>
+                <li>카카오벤처스 투자</li>
+                <li>FAS 자체 분석 엔진</li>
+              </ul>
+              <div style="font-size: 0.85vw; color: var(--red); margin: 0.3vh 0;">❌ 우리가 넘어설 점</div>
+              <ul class="feature-list" style="font-size: 0.85vw;">
+                <li>AI 깊이 부족 (규칙 기반)</li>
+                <li>인생설계 없음</li>
+              </ul>
+            </div>
+            <div class="app-card">
+              <div class="app-card-header">
+                <div class="app-card-icon">🌐</div>
+                <div>
+                  <div class="app-card-title">청월당</div>
+                  <div class="app-card-subtitle">GPT Store 세계 1위</div>
+                </div>
+              </div>
+              <div style="font-size: 0.9vw; margin-bottom: 0.5vh;">
+                <strong>사용자:</strong> 300만+ | <strong>만족도:</strong> 9.67/10
+              </div>
+              <div style="font-size: 0.85vw; color: var(--green); margin-bottom: 0.3vh;">✅ 강점</div>
+              <ul class="feature-list" style="font-size: 0.85vw;">
+                <li><strong>LLM+RAG 기술력</strong></li>
+                <li>분 단위 만세력</li>
+                <li>글로벌 검증 (스탠포드)</li>
+              </ul>
+              <div style="font-size: 0.85vw; color: var(--red); margin: 0.3vh 0;">❌ 우리가 넘어설 점</div>
+              <ul class="feature-list" style="font-size: 0.85vw;">
+                <li>자체 앱 부재</li>
+                <li>인생설계 없음</li>
+              </ul>
+            </div>
+            <div class="app-card">
+              <div class="app-card-header">
+                <div class="app-card-icon">💬</div>
+                <div>
+                  <div class="app-card-title">헬로봇</div>
+                  <div class="app-card-subtitle">AI 챗봇 × 게임화</div>
+                </div>
+              </div>
+              <div style="font-size: 0.9vw; margin-bottom: 0.5vh;">
+                <strong>다운로드:</strong> 600만+ | <strong>MAU:</strong> 80만
+              </div>
+              <div style="font-size: 0.85vw; color: var(--green); margin-bottom: 0.3vh;">✅ 강점</div>
+              <ul class="feature-list" style="font-size: 0.85vw;">
+                <li>대화형 AI 경험</li>
+                <li>가챠/컬렉션 게이미피케이션</li>
+                <li>관계 매핑 (20명)</li>
+              </ul>
+              <div style="font-size: 0.85vw; color: var(--red); margin: 0.3vh 0;">❌ 우리가 넘어설 점</div>
+              <ul class="feature-list" style="font-size: 0.85vw;">
+                <li>사주 전문성 낮음</li>
+                <li>엔터 편중</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ==================== PART 3: 해외 앱 ==================== -->
+
+      <!-- Slide 10: Section -->
+      <div class="slide slide-section" data-slide="10">
+        <div class="section-icon"><i class="ph-bold ph-globe"></i></div>
+        <div class="section-number-large">Part 3</div>
+        <div class="section-title-large">해외 앱 분석</div>
+        <div class="section-subtitle-large">Co-Star · Pattern · Sanctuary · Replika · Fabulous</div>
+      </div>
+
+      <!-- Slide 11: 점성술 앱 -->
+      <div class="slide slide-content" data-slide="11">
+        <div class="content-header">
+          <div class="content-section-num">해외 앱</div>
+          <div class="content-title">점성술 앱 비교</div>
+        </div>
+        <div class="content-body">
+          <table class="comparison-table">
+            <thead>
+              <tr>
+                <th>앱</th>
+                <th>MAU</th>
+                <th>가격</th>
+                <th>핵심 기능</th>
+                <th>배울 점</th>
+                <th>공백</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="header-col">Co-Star</td>
+                <td>500만+</td>
+                <td>$8.99/월</td>
+                <td>NASA 데이터, 소셜 궁합</td>
+                <td>날카로운 톤, 바이럴 공유</td>
+                <td style="color: var(--red);">행동 가이드 없음</td>
+              </tr>
+              <tr>
+                <td class="header-col">The Pattern</td>
+                <td>300만+</td>
+                <td>$14.99/월</td>
+                <td>타이밍 사이클, 관계 패턴</td>
+                <td><strong>대운과 유사한 개념</strong></td>
+                <td style="color: var(--red);">구체적 계획 없음</td>
+              </tr>
+              <tr>
+                <td class="header-col">Sanctuary</td>
+                <td>700만+</td>
+                <td>분당 과금</td>
+                <td>AI + 전문가 연결</td>
+                <td>하이브리드 모델</td>
+                <td style="color: var(--red);">AI 깊이 부족</td>
+              </tr>
+              <tr>
+                <td class="header-col">Astrotalk (인도)</td>
+                <td>1000만+</td>
+                <td>분당 과금</td>
+                <td>전문가 상담 + 상품 판매</td>
+                <td>비즈니스 질문, AstroMall</td>
+                <td style="color: var(--red);">AI 부재</td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="highlight-box" style="margin-top: 0.8vh;">
+            <div class="highlight-title">💡 핵심 인사이트</div>
+            <div class="highlight-text">
+              서양 점성술 = 성격/관계 인사이트 중심 → <strong>행동 조언/플래닝 없음</strong><br>
+              동양 사주 = 원래 <strong>타이밍과 행동</strong>에 대한 것 → 인생설계와 자연스럽게 연결 가능
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 12: AI 코칭 앱 -->
+      <div class="slide slide-content" data-slide="12">
+        <div class="content-header">
+          <div class="content-section-num">해외 앱</div>
+          <div class="content-title">AI 코칭 / 인생설계 앱 비교</div>
+        </div>
+        <div class="content-body">
+          <table class="comparison-table">
+            <thead>
+              <tr>
+                <th>앱</th>
+                <th>유형</th>
+                <th>MAU</th>
+                <th>가격</th>
+                <th>핵심 기능</th>
+                <th>공백</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="header-col">Replika</td>
+                <td>AI 친구</td>
+                <td>500만+</td>
+                <td>$7.99/월</td>
+                <td>24/7 대화, 감정 케어, AR</td>
+                <td style="color: var(--red);">운명/타이밍 없음</td>
+              </tr>
+              <tr>
+                <td class="header-col">Pi</td>
+                <td>AI 대화</td>
+                <td>100만+</td>
+                <td>무료</td>
+                <td>감성 AI, 음성 대화</td>
+                <td style="color: var(--red);">목표/계획 없음</td>
+              </tr>
+              <tr>
+                <td class="header-col">Character.AI</td>
+                <td>캐릭터 AI</td>
+                <td>350만 DAU</td>
+                <td>$9.99/월</td>
+                <td>캐릭터 롤플레이</td>
+                <td style="color: var(--red);">실용성 없음</td>
+              </tr>
+              <tr>
+                <td class="header-col">Fabulous</td>
+                <td>습관 코칭</td>
+                <td>300만+</td>
+                <td>$7.99/월</td>
+                <td>행동과학 기반 루틴, Journey</td>
+                <td style="color: var(--red);">"왜 이 목표?" 부재</td>
+              </tr>
+              <tr>
+                <td class="header-col">Coach.me</td>
+                <td>목표 코칭</td>
+                <td>50만+</td>
+                <td>코치 과금</td>
+                <td>습관 트래커 + 전문 코치</td>
+                <td style="color: var(--red);">AI 코칭 없음</td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="two-column" style="margin-top: 0.8vh;">
+            <div class="key-point-card">
+              <div class="key-point-title">Replika에서 배울 점</div>
+              <div class="key-point-text">감정적 연결 형성, 메모리 기능, AR 경험 → 사주 AI 친구에 적용</div>
+            </div>
+            <div class="key-point-card">
+              <div class="key-point-title">Fabulous에서 배울 점</div>
+              <div class="key-point-text">습관 스태킹, Journey 시스템, 과학적 설계 → 운세 기반 루틴에 적용</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 13: 블루오션 근거 -->
+      <div class="slide slide-content" data-slide="13">
+        <div class="content-header">
+          <div class="content-section-num">해외 앱</div>
+          <div class="content-title">운세 + 인생설계 결합 사례 = 없음</div>
+          <div class="content-subtitle">15개 앱 분석 결과, 완전 결합 사례 부재 → 블루오션 확인</div>
+        </div>
+        <div class="content-body">
+          <div class="two-column">
+            <div>
+              <h4 style="font-size: 1.2vw; margin-bottom: 0.6vh; color: var(--green);">🟢 기회인 이유</h4>
+              <ul class="feature-list" style="font-size: 0.95vw;">
+                <li><i class="ph-bold ph-check"></i> <strong>블루오션</strong> - 진정한 경쟁자 없음</li>
+                <li><i class="ph-bold ph-check"></i> <strong>동양 철학 장점</strong> - 사주는 원래 "타이밍과 행동"에 대한 것</li>
+                <li><i class="ph-bold ph-check"></i> <strong>AI 시대</strong> - LLM으로 개인화된 행동 제안 가능</li>
+                <li><i class="ph-bold ph-check"></i> <strong>한국/아시아 적합</strong> - 사주가 이미 중요 의사결정에 활용됨</li>
+              </ul>
+            </div>
+            <div>
+              <h4 style="font-size: 1.2vw; margin-bottom: 0.6vh; color: var(--red);">🔴 주의할 점</h4>
+              <ul class="feature-list" style="font-size: 0.95vw;">
+                <li><i class="ph-bold ph-warning"></i> <strong>책임 리스크</strong> - "앱이 시키는 대로 했는데 잘못됐다"</li>
+                <li><i class="ph-bold ph-warning"></i> <strong>신뢰도 문제</strong> - 운세 정확도 vs 계획 확실성 충돌</li>
+              </ul>
+              <div style="margin-top: 0.6vh; padding: 0.5vh 0.8vw; background: var(--gray-100); border-radius: 8px; font-size: 0.9vw;">
+                <strong>해결책:</strong> 운세를 "제안"으로, 행동을 "선택"으로 프레이밍<br>
+                + 점진적 신뢰 구축 (작은 성공 → 장기 계획)
+              </div>
+            </div>
+          </div>
+          <div class="usp-box" style="margin-top: 0.8vh;">
+            <div class="usp-title">결론: 운세앱도 코칭앱도 이 영역을 결합하지 못함</div>
+            <div style="font-size: 1.1vw; opacity: 0.9;">
+              운세앱 = "알아야 할 것" 중심 | 코칭앱 = "해야 할 것" 중심 | <strong>우리 = 둘 다 + 게임</strong>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ==================== PART 4: 게이미피케이션 ==================== -->
+
+      <!-- Slide 14: Section -->
+      <div class="slide slide-section" data-slide="14">
+        <div class="section-icon"><i class="ph-bold ph-game-controller"></i></div>
+        <div class="section-number-large">Part 4</div>
+        <div class="section-title-large">게이미피케이션 전략</div>
+        <div class="section-subtitle-large">Duolingo 성공 공식 + 인생 RPG 시스템</div>
+      </div>
+
+      <!-- Slide 15: 벤치마크 -->
+      <div class="slide slide-content" data-slide="15">
+        <div class="content-header">
+          <div class="content-section-num">게이미피케이션</div>
+          <div class="content-title">리텐션 메커니즘 벤치마크</div>
+        </div>
+        <div class="content-body">
+          <div class="three-column">
+            <div class="app-card">
+              <div class="app-card-header">
+                <div class="app-card-icon">🦉</div>
+                <div>
+                  <div class="app-card-title">Duolingo</div>
+                  <div class="app-card-subtitle">게이미피케이션의 정석</div>
+                </div>
+              </div>
+              <ul class="feature-list" style="font-size: 0.85vw;">
+                <li>🔥 <strong>스트릭</strong> - 손실 회피 심리</li>
+                <li>🏆 <strong>리그</strong> - 주간 경쟁/승급</li>
+                <li>⭐ <strong>XP/레벨</strong> - 즉각 보상</li>
+                <li>❤️ <strong>하트</strong> - 희소성 창출</li>
+                <li>😢 <strong>Duo 캐릭터</strong> - 죄책감 유발</li>
+              </ul>
+            </div>
+            <div class="app-card">
+              <div class="app-card-header">
+                <div class="app-card-icon">🤖</div>
+                <div>
+                  <div class="app-card-title">헬로봇</div>
+                  <div class="app-card-subtitle">운세앱 게이미피케이션</div>
+                </div>
+              </div>
+              <ul class="feature-list" style="font-size: 0.85vw;">
+                <li>🎰 <strong>가챠</strong> - 일일 무료 뽑기</li>
+                <li>💎 <strong>하트 시스템</strong> - 가상 화폐</li>
+                <li>📚 <strong>컬렉션</strong> - 수집 욕구</li>
+                <li>⏰ <strong>기간한정</strong> - FOMO</li>
+                <li>👥 <strong>관계 매핑</strong> - 소셜 바이럴</li>
+              </ul>
+            </div>
+            <div class="app-card highlight">
+              <div class="app-card-header">
+                <div class="app-card-icon">🐉</div>
+                <div>
+                  <div class="app-card-title">우리 앱</div>
+                  <div class="app-card-subtitle">최적 조합</div>
+                </div>
+              </div>
+              <ul class="feature-list" style="font-size: 0.85vw;">
+                <li>🔥 <strong>스트릭</strong> - 일일 체크인</li>
+                <li>⚔️ <strong>인생 RPG</strong> - 스탯/레벨업</li>
+                <li>📜 <strong>퀘스트</strong> - 목표를 게임화</li>
+                <li>🐾 <strong>12지신 캐릭터</strong> - IP 활용</li>
+                <li>🏅 <strong>리그</strong> - 같은 띠 경쟁</li>
+              </ul>
+            </div>
+          </div>
+          <div class="highlight-box" style="margin-top: 0.6vh;">
+            <div class="highlight-title">🎮 Duolingo 성공 공식</div>
+            <div class="highlight-text">
+              <strong>손실 회피</strong>(스트릭) + <strong>사회적 비교</strong>(리그) + <strong>즉각 보상</strong>(XP) + <strong>감정 연결</strong>(캐릭터) + <strong>희소성</strong>(하트) = 극강의 리텐션
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 16: 인생 RPG -->
+      <div class="slide slide-content" data-slide="16">
+        <div class="content-header">
+          <div class="content-section-num">게이미피케이션</div>
+          <div class="content-title">인생 RPG 시스템</div>
+        </div>
+        <div class="content-body">
+          <div class="two-column">
+            <div>
+              <h4 style="font-size: 1.2vw; margin-bottom: 0.5vh; color: var(--accent);">🎮 인생 스탯 (오행 연계)</h4>
+              <div class="code-block" style="font-size: 0.85vw;">
+                <div style="color: #D4AF37;">나의 인생 스탯</div>
+                <div>[커리어] ████████░░░░ 67/100 (木)</div>
+                <div>[건강]   ██████░░░░░░ 52/100 (水)</div>
+                <div>[재정]   █████░░░░░░░ 45/100 (金)</div>
+                <div>[관계]   ███████████░ 89/100 (火)</div>
+                <div>[성장]   ████████░░░░ 71/100 (土)</div>
+                <div style="margin-top: 0.3vh; color: #A0522D;">━━━━━━━━━━━━━━━━━━</div>
+                <div style="color: #D4AF37;">📜 진행 중인 퀘스트:</div>
+                <div>• [메인] 스타트업 창업 (17%)</div>
+                <div>• [서브] 체중 5kg 감량 (60%)</div>
+                <div>• [일일] 오늘의 미션 3개 (1/3)</div>
+              </div>
+            </div>
+            <div>
+              <h4 style="font-size: 1.2vw; margin-bottom: 0.5vh; color: var(--accent);">🐉 캐릭터 코칭</h4>
+              <div style="background: linear-gradient(135deg, #FEF3C7 0%, #FDE68A 100%); padding: 0.6vh 0.8vw; border-radius: 10px; font-size: 0.9vw;">
+                <div style="display: flex; gap: 0.6vw;">
+                  <div style="font-size: 2vw;">🐉</div>
+                  <div>
+                    <div style="font-weight: 700; color: #92400E;">"청룡"의 코칭</div>
+                    <div style="color: #78350F; line-height: 1.4;">
+                      "오늘 태스크 3개 중 1개만 완료했네. 괜찮아, 오늘 에너지가 좀 낮은 날이야.<br>
+                      내일은 木 기운이 올라오니까 남은 2개 하기 좋을 거야!"
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="key-point-card" style="margin-top: 0.5vh;">
+                <div class="key-point-title">핵심 차별화</div>
+                <div class="key-point-text">
+                  캐릭터가 단순 알림이 아닌 <strong>"이유"</strong>를 설명<br>
+                  운세 기반 공감 + 사용할수록 캐릭터 성장
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ==================== PART 5: 핵심 기술 ==================== -->
+
+      <!-- Slide 17: Section -->
+      <div class="slide slide-section" data-slide="17">
+        <div class="section-icon"><i class="ph-bold ph-cpu"></i></div>
+        <div class="section-number-large">Part 5</div>
+        <div class="section-title-large">핵심 기술</div>
+        <div class="section-subtitle-large">Google Grounding API + 메타버스 기술 + 3개년 로드맵</div>
+      </div>
+
+      <!-- Slide 18: Grounding -->
+      <div class="slide slide-content" data-slide="18">
+        <div class="content-header">
+          <div class="content-section-num">핵심 기술</div>
+          <div class="content-title">Google Grounding API 활용</div>
+        </div>
+        <div class="content-body">
+          <div class="two-column">
+            <div>
+              <h4 style="font-size: 1.2vw; margin-bottom: 0.5vh; color: var(--accent);">🌐 Grounding 적용 시나리오</h4>
+              <div class="key-point-card" style="margin-bottom: 0.4vh;">
+                <div class="key-point-title">날씨 + 사주</div>
+                <div class="key-point-text">"오늘 서울 맑음, 火 기운과 조화 → 야외 점심 추천"</div>
+              </div>
+              <div class="key-point-card" style="margin-bottom: 0.4vh;">
+                <div class="key-point-title">뉴스 + 직업 + 운세</div>
+                <div class="key-point-text">"IT 업계 AI 발표, 재성 상승 → 새 프로젝트 적기"</div>
+              </div>
+              <div class="key-point-card" style="margin-bottom: 0.4vh;">
+                <div class="key-point-title">이벤트 + 여행운</div>
+                <div class="key-point-text">"제주 축제 정보, 금전운 좋음 → 주말 여행 추천"</div>
+              </div>
+              <div class="key-point-card">
+                <div class="key-point-title">건강 + 절기</div>
+                <div class="key-point-text">"입춘 후 양기 상승, 水 부족 → 검은콩/해조류 섭취"</div>
+              </div>
+            </div>
+            <div>
+              <h4 style="font-size: 1.2vw; margin-bottom: 0.5vh; color: var(--accent);">⚡ 기술적 준비 상황</h4>
+              <table class="comparison-table" style="font-size: 0.9vw;">
+                <tr><td class="header-col">Gemini API</td><td>✅ 연동 검증 완료</td></tr>
+                <tr><td class="header-col">Grounding</td><td>✅ 테스트 완료</td></tr>
+                <tr><td class="header-col">만세력 엔진</td><td>✅ 분 단위 정확도</td></tr>
+                <tr><td class="header-col">프롬프트</td><td>✅ 최적화 완료</td></tr>
+              </table>
+              <div style="margin-top: 0.5vh; padding: 0.4vh 0.6vw; background: var(--gray-100); border-radius: 6px; font-size: 0.85vw;">
+                <strong>최적화 전략:</strong><br>
+                • 캐싱 (날씨/뉴스 1시간 TTL)<br>
+                • 배치 처리 (아침/저녁 운세 사전 생성)<br>
+                • 하이브리드 (정적 정보는 자체 DB)
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 19: 메타버스 로드맵 -->
+      <div class="slide slide-content" data-slide="19">
+        <div class="content-header">
+          <div class="content-section-num">핵심 기술</div>
+          <div class="content-title">메타버스 구현 로드맵</div>
+        </div>
+        <div class="content-body">
+          <div class="three-column">
+            <div class="app-card">
+              <div style="color: var(--accent); font-weight: 700; font-size: 1.1vw; margin-bottom: 0.3vh;">Phase 1: MVP</div>
+              <div style="font-size: 0.9vw; color: var(--gray-500); margin-bottom: 0.5vh;">기반 구축</div>
+              <ul class="feature-list" style="font-size: 0.85vw;">
+                <li>2D/2.5D 캐릭터 시스템</li>
+                <li>사주 기반 자동 생성</li>
+                <li>오행 컬러 테마</li>
+                <li>정적 가상 공간 배경</li>
+              </ul>
+              <div style="margin-top: 0.4vh; font-size: 0.8vw; color: var(--gray-500);">
+                React Native + Three.js
+              </div>
+            </div>
+            <div class="app-card">
+              <div style="color: var(--accent); font-weight: 700; font-size: 1.1vw; margin-bottom: 0.3vh;">Phase 2: AR</div>
+              <div style="font-size: 0.9vw; color: var(--gray-500); margin-bottom: 0.5vh;">기능 확장</div>
+              <ul class="feature-list" style="font-size: 0.85vw;">
+                <li>AR 타로카드 뽑기</li>
+                <li>3D 아바타 (Avatar SDK)</li>
+                <li>셀카 기반 생성</li>
+                <li>친구/궁합 소셜 기능</li>
+              </ul>
+              <div style="margin-top: 0.4vh; font-size: 0.8vw; color: var(--gray-500);">
+                Unity + AR Foundation
+              </div>
+            </div>
+            <div class="app-card">
+              <div style="color: var(--accent); font-weight: 700; font-size: 1.1vw; margin-bottom: 0.3vh;">Phase 3: 메타버스</div>
+              <div style="font-size: 0.9vw; color: var(--gray-500); margin-bottom: 0.5vh;">완전 통합</div>
+              <ul class="feature-list" style="font-size: 0.85vw;">
+                <li>실시간 3D 점술 공간</li>
+                <li>멀티플레이어 소셜</li>
+                <li>AI 점술가 NPC</li>
+                <li>시즌 이벤트 (절기별)</li>
+              </ul>
+              <div style="margin-top: 0.4vh; font-size: 0.8vw; color: var(--gray-500);">
+                Unity + Photon
+              </div>
+            </div>
+          </div>
+          <div style="margin-top: 0.8vh; padding: 0.5vh 0.8vw; background: var(--gray-100); border-radius: 8px; font-size: 0.9vw;">
+            <strong>⚠️ 참고:</strong> Ready Player Me 서비스 종료 (2026.01.31) → <strong>Avatar SDK (MetaPerson Creator)</strong> 대안 활용
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 20: 메타버스 핵심 기술 적용 -->
+      <div class="slide slide-content" data-slide="20">
+        <div class="content-header">
+          <div class="content-section-num">핵심 기술</div>
+          <div class="content-title">메타버스 기술 적용 전략</div>
+          <div class="content-subtitle">"사주를 읽는 것에서, 사주를 사는 것으로" - 업계 검증 기술 활용</div>
+        </div>
+        <div class="content-body">
+          <div class="two-column">
+            <div>
+              <h4 style="font-size: 1.1vw; margin-bottom: 0.5vh; color: var(--accent);">🧬 아바타 & 개인화</h4>
+              <div class="key-point-card" style="margin-bottom: 0.3vh;">
+                <div class="key-point-title">디지털 DNA 아바타</div>
+                <div class="key-point-text">사주 명식 → 자동 스타일/색상 생성 (일간 오행 컬러, 격국별 분위기)</div>
+              </div>
+              <div class="key-point-card" style="margin-bottom: 0.3vh;">
+                <div class="key-point-title">AI 성격 반영</div>
+                <div class="key-point-text">격국별 행동 패턴 (식신격→창의적, 정관격→정돈된 행동)</div>
+              </div>
+              <div class="key-point-card" style="margin-bottom: 0.3vh;">
+                <div class="key-point-title">대운 연동 성장</div>
+                <div class="key-point-text">10년 대운에 따라 아바타 분위기/스타일 자동 변화</div>
+              </div>
+
+              <h4 style="font-size: 1.1vw; margin: 0.6vh 0 0.5vh; color: var(--accent);">🎮 시뮬레이션 체험</h4>
+              <div class="key-point-card" style="margin-bottom: 0.3vh;">
+                <div class="key-point-title">대인관계 시뮬레이터</div>
+                <div class="key-point-text">내 사주 성격이 상대에게 어떻게 느껴지는지 체험</div>
+              </div>
+              <div class="key-point-card" style="margin-bottom: 0.3vh;">
+                <div class="key-point-title">직업 가상 체험</div>
+                <div class="key-point-text">사주 적성 기반 진로 탐색 (사업가/예술가/관리직)</div>
+              </div>
+            </div>
+            <div>
+              <h4 style="font-size: 1.1vw; margin-bottom: 0.5vh; color: var(--accent);">💕 매칭 & 커뮤니티</h4>
+              <div class="key-point-card" style="margin-bottom: 0.3vh;">
+                <div class="key-point-title">운명적 매칭</div>
+                <div class="key-point-text">사주 궁합 + 별자리 호환성 기반 친구/연인 추천</div>
+              </div>
+              <div class="key-point-card" style="margin-bottom: 0.3vh;">
+                <div class="key-point-title">연애 시뮬레이터</div>
+                <div class="key-point-text">궁합 좋은/안 맞는 유형과 미리 연애 체험</div>
+              </div>
+              <div class="key-point-card" style="margin-bottom: 0.3vh;">
+                <div class="key-point-title">운명 커뮤니티</div>
+                <div class="key-point-text">같은 일간/별자리 모임 ("갑목 라운지", "전갈자리 클럽")</div>
+              </div>
+
+              <h4 style="font-size: 1.1vw; margin: 0.6vh 0 0.5vh; color: var(--accent);">🌌 특별 체험</h4>
+              <div class="key-point-card" style="margin-bottom: 0.3vh;">
+                <div class="key-point-title">평행우주 체험</div>
+                <div class="key-point-text">"다른 사주로 태어났다면?" What-if 시나리오</div>
+              </div>
+              <div class="key-point-card" style="margin-bottom: 0.3vh;">
+                <div class="key-point-title">실시간 큐레이션</div>
+                <div class="key-point-text">오늘의 오행 기운 + 날씨/뉴스 연동 맞춤 콘텐츠</div>
+              </div>
+            </div>
+          </div>
+          <div style="margin-top: 0.6vh; padding: 0.5vh 0.8vw; background: linear-gradient(90deg, var(--accent), var(--accent-light)); border-radius: 8px; color: white; font-size: 0.95vw; text-align: center;">
+            <strong>핵심 컨셉:</strong> "당신은 식신격" 텍스트 읽기 &lt; <strong>식신격 아바타로 직접 살아보기</strong> = 자기이해의 차원이 다름
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 21: 메타버스 3개년 로드맵 -->
+      <div class="slide slide-content" data-slide="21">
+        <div class="content-header">
+          <div class="content-section-num">핵심 기술</div>
+          <div class="content-title">메타버스 3개년 로드맵 (2025-2028)</div>
+          <div class="content-subtitle">업계 기술 트렌드에 맞춘 단계별 전략 - 2027년 스마트글래스 대중화 선점</div>
+        </div>
+        <div class="content-body">
+          <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.8vw;">
+            <!-- 2025 -->
+            <div class="app-card" style="border-top: 3px solid var(--gray-400);">
+              <div style="color: var(--gray-600); font-weight: 700; font-size: 1.1vw; margin-bottom: 0.3vh;">2025</div>
+              <div style="font-size: 0.85vw; color: var(--accent); font-weight: 600; margin-bottom: 0.4vh;">기술 기반 확립</div>
+              <ul class="feature-list" style="font-size: 0.8vw;">
+                <li>AI 사주 코치 MVP</li>
+                <li>감정 반응형 디지털 휴먼</li>
+                <li>Google Grounding 연동</li>
+                <li>오행 캐릭터 시스템</li>
+                <li>크로스 디바이스 설계</li>
+              </ul>
+              <div style="margin-top: 0.4vh; padding: 0.3vh; background: var(--gray-100); border-radius: 4px; font-size: 0.75vw; text-align: center;">
+                기반 구축
+              </div>
+            </div>
+            <!-- 2026 -->
+            <div class="app-card" style="border-top: 3px solid var(--blue);">
+              <div style="color: var(--blue); font-weight: 700; font-size: 1.1vw; margin-bottom: 0.3vh;">2026</div>
+              <div style="font-size: 0.85vw; color: var(--accent); font-weight: 600; margin-bottom: 0.4vh;">생태계 확장</div>
+              <ul class="feature-list" style="font-size: 0.8vw;">
+                <li>3D 디지털 휴먼 코치</li>
+                <li>음성 대화 + 표정</li>
+                <li>학습하는 AI (피드백 루프)</li>
+                <li>디지털 자산 시스템</li>
+                <li>사주 API 플랫폼</li>
+              </ul>
+              <div style="margin-top: 0.4vh; padding: 0.3vh; background: var(--gray-100); border-radius: 4px; font-size: 0.75vw; text-align: center;">
+                플랫폼 확장
+              </div>
+            </div>
+            <!-- 2027 -->
+            <div class="app-card" style="border-top: 3px solid var(--gold);">
+              <div style="color: var(--gold); font-weight: 700; font-size: 1.1vw; margin-bottom: 0.3vh;">2027 ⭐</div>
+              <div style="font-size: 0.85vw; color: var(--accent); font-weight: 600; margin-bottom: 0.4vh;">메타버스 통합</div>
+              <ul class="feature-list" style="font-size: 0.8vw;">
+                <li><strong>스마트글래스 앱</strong></li>
+                <li>시야에 운세 AR 오버레이</li>
+                <li>메타버스 커뮤니티</li>
+                <li>가상-실물 커머스</li>
+                <li>디지털 아이덴티티</li>
+              </ul>
+              <div style="margin-top: 0.4vh; padding: 0.3vh; background: var(--gold); color: white; border-radius: 4px; font-size: 0.75vw; text-align: center;">
+                메타버스 선점
+              </div>
+            </div>
+            <!-- 2028+ -->
+            <div class="app-card" style="border-top: 3px solid var(--accent);">
+              <div style="color: var(--accent); font-weight: 700; font-size: 1.1vw; margin-bottom: 0.3vh;">2028+</div>
+              <div style="font-size: 0.85vw; color: var(--accent); font-weight: 600; margin-bottom: 0.4vh;">시장 선도</div>
+              <ul class="feature-list" style="font-size: 0.8vw;">
+                <li>운세 크리에이터 생태계</li>
+                <li>가상 점술사 직업군</li>
+                <li>산업 융합 (교육/헬스)</li>
+                <li>메타버스 경제 주도</li>
+                <li>차세대 기술 연구</li>
+              </ul>
+              <div style="margin-top: 0.4vh; padding: 0.3vh; background: var(--accent); color: white; border-radius: 4px; font-size: 0.75vw; text-align: center;">
+                시장 리더십
+              </div>
+            </div>
+          </div>
+          <div style="margin-top: 0.6vh; display: flex; gap: 1vw;">
+            <div style="flex: 1; padding: 0.5vh 0.8vw; background: var(--gray-100); border-radius: 8px; font-size: 0.85vw;">
+              <strong>🎯 핵심:</strong> 2027년 <strong>스마트글래스/경량 HMD 대중화</strong> 예상 → 모바일 없이 가상세계 상호작용 시대 → <strong>지금 준비해야 선점</strong>
+            </div>
+            <div style="flex: 1; padding: 0.5vh 0.8vw; background: linear-gradient(90deg, var(--accent), var(--accent-light)); border-radius: 8px; color: white; font-size: 0.85vw; text-align: center;">
+              <strong>"메타버스 시대의 첫 번째 운세 플랫폼"</strong>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ==================== PART 6: 비즈니스 & 결론 ==================== -->
+
+      <!-- Slide 22: Section -->
+      <div class="slide slide-section" data-slide="22">
+        <div class="section-icon"><i class="ph-bold ph-currency-circle-dollar"></i></div>
+        <div class="section-number-large">Part 6</div>
+        <div class="section-title-large">실행 전략 & 결론</div>
+        <div class="section-subtitle-large">벤치마킹 통합, 실행 로드맵, 핵심 차별화</div>
+      </div>
+
+      <!-- Slide 23: 벤치마킹 통합 전략 -->
+      <div class="slide slide-content" data-slide="23">
+        <div class="content-header">
+          <div class="content-section-num">실행 전략</div>
+          <div class="content-title">벤치마킹 통합 전략</div>
+        </div>
+        <div class="content-body">
+          <div class="two-column">
+            <div>
+              <h4 style="font-size: 1.2vw; margin-bottom: 0.5vh; color: var(--accent);">🎯 각 앱에서 배운 것</h4>
+              <div class="key-point-card" style="margin-bottom: 0.3vh;">
+                <div class="key-point-title">점신 (1,900만 유저)</div>
+                <div class="key-point-text">깊이 있는 해석, 정확도 = 신뢰의 핵심</div>
+              </div>
+              <div class="key-point-card" style="margin-bottom: 0.3vh;">
+                <div class="key-point-title">청월당 (GPT 1위)</div>
+                <div class="key-point-text">AI 기술로 새로운 경험 창출 가능</div>
+              </div>
+              <div class="key-point-card" style="margin-bottom: 0.3vh;">
+                <div class="key-point-title">헬로봇 (iOS 4.7★)</div>
+                <div class="key-point-text">캐릭터 + 솔직함 + 부드러움 = 리텐션</div>
+              </div>
+              <div class="key-point-card">
+                <div class="key-point-title">Fabulous</div>
+                <div class="key-point-text">목표 시스템이 실제 행동 변화 유도</div>
+              </div>
+            </div>
+            <div>
+              <h4 style="font-size: 1.2vw; margin-bottom: 0.5vh; color: var(--accent);">✨ 우리의 통합 공식</h4>
+              <div class="highlight-box" style="padding: 0.8vh 0.6vw; font-size: 0.9vw;">
+                <div style="margin-bottom: 0.5vh;">
+                  <strong>점신의</strong> 깊이 +<br>
+                  <strong>청월당의</strong> AI 기술 +<br>
+                  <strong>헬로봇의</strong> 캐릭터와 감성 +<br>
+                  <strong>Fabulous의</strong> 인생설계 +<br>
+                  <strong>Co-Star의</strong> 소셜 바이럴 +
+                </div>
+                <div style="padding: 0.4vh 0.5vw; background: var(--accent); color: white; border-radius: 4px; text-align: center;">
+                  <strong>+ 우리만의 실시간 Grounding</strong>
+                </div>
+              </div>
+              <div style="margin-top: 0.5vh; font-size: 0.85vw; color: var(--gray-600); text-align: center;">
+                = <strong>"검증된 강점 조합 + 차별화 기술"</strong>
+              </div>
+            </div>
+          </div>
+          <div class="stats-row" style="margin-top: 0.6vh;">
+            <div class="stat-item">
+              <div class="stat-value">15개</div>
+              <div class="stat-label">분석한 앱</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-value">4조+</div>
+              <div class="stat-label">검증된 시장</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-value">5개</div>
+              <div class="stat-label">핵심 벤치마킹</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-value">3개</div>
+              <div class="stat-label">우리만의 차별화</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 24: 전문가 플랫폼 참고 (최소화) -->
+      <div class="slide slide-content" data-slide="24">
+        <div class="content-header">
+          <div class="content-section-num">실행 전략</div>
+          <div class="content-title">시장 검증 현황</div>
+        </div>
+        <div class="content-body">
+          <table class="comparison-table">
+            <thead>
+              <tr>
+                <th>검증 포인트</th>
+                <th>증거</th>
+                <th>시사점</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="header-col">시장 규모</td>
+                <td><strong>4조+ (국내 전체)</strong></td>
+                <td>충분한 시장 존재</td>
+              </tr>
+              <tr>
+                <td class="header-col">모바일 전환</td>
+                <td>점신 1,900만 / 포스텔러 900만</td>
+                <td>모바일 운세 수요 확인</td>
+              </tr>
+              <tr>
+                <td class="header-col">AI 수용성</td>
+                <td>청월당 GPT 스토어 1위</td>
+                <td>AI 운세에 대한 긍정적 반응</td>
+              </tr>
+              <tr>
+                <td class="header-col">글로벌 기회</td>
+                <td>Co-Star ⭐4.8, Replika 10M+</td>
+                <td>해외 확장 가능성</td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="highlight-box" style="margin-top: 0.8vh;">
+            <div class="highlight-title">💡 우리의 기회</div>
+            <div class="highlight-text">
+              검증된 시장에서, 검증된 강점들을 조합하여, <strong>아직 없는 통합 서비스</strong>를 만듭니다.<br>
+              "운세 + 인생설계 + 게이미피케이션 + 실시간 AI" = <strong>새로운 카테고리</strong>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 25: 차별화 요약 -->
+      <div class="slide slide-content" data-slide="25">
+        <div class="content-header">
+          <div class="content-section-num">결론</div>
+          <div class="content-title">경쟁사 대비 차별화 요약</div>
+        </div>
+        <div class="content-body">
+          <table class="comparison-table" style="font-size: 0.9vw;">
+            <thead>
+              <tr>
+                <th>기능</th>
+                <th>점신</th>
+                <th>포스텔러</th>
+                <th>Co-Star</th>
+                <th>Replika</th>
+                <th style="background: var(--gold);">우리 앱</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="header-col">사주 분석</td>
+                <td>✅</td>
+                <td>✅</td>
+                <td>❌</td>
+                <td>❌</td>
+                <td style="background: rgba(212, 175, 55, 0.1);"><strong>✅ 정밀 (분 단위)</strong></td>
+              </tr>
+              <tr>
+                <td class="header-col">점성술</td>
+                <td>❌</td>
+                <td>△</td>
+                <td>✅</td>
+                <td>❌</td>
+                <td style="background: rgba(212, 175, 55, 0.1);"><strong>✅ 통합</strong></td>
+              </tr>
+              <tr>
+                <td class="header-col">LLM 대화</td>
+                <td>❌</td>
+                <td>❌</td>
+                <td>❌</td>
+                <td>✅</td>
+                <td style="background: rgba(212, 175, 55, 0.1);"><strong>✅ 사주 특화</strong></td>
+              </tr>
+              <tr>
+                <td class="header-col">인생 설계</td>
+                <td style="color: var(--red);">❌</td>
+                <td style="color: var(--red);">❌</td>
+                <td style="color: var(--red);">❌</td>
+                <td>△</td>
+                <td style="background: rgba(212, 175, 55, 0.1);"><strong>✅ 핵심 (10년→1일)</strong></td>
+              </tr>
+              <tr>
+                <td class="header-col">실시간 Grounding</td>
+                <td style="color: var(--red);">❌</td>
+                <td style="color: var(--red);">❌</td>
+                <td style="color: var(--red);">❌</td>
+                <td style="color: var(--red);">❌</td>
+                <td style="background: rgba(212, 175, 55, 0.1);"><strong>✅ 독점</strong></td>
+              </tr>
+              <tr>
+                <td class="header-col">게이미피케이션</td>
+                <td>△</td>
+                <td>△</td>
+                <td>△</td>
+                <td>△</td>
+                <td style="background: rgba(212, 175, 55, 0.1);"><strong>✅ 인생 RPG</strong></td>
+              </tr>
+              <tr>
+                <td class="header-col">메타버스</td>
+                <td style="color: var(--red);">❌</td>
+                <td style="color: var(--red);">❌</td>
+                <td style="color: var(--red);">❌</td>
+                <td>△ AR</td>
+                <td style="background: rgba(212, 175, 55, 0.1);"><strong>✅ 3D/AR</strong></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Slide 26: 실행 로드맵 -->
+      <div class="slide slide-content" data-slide="26">
+        <div class="content-header">
+          <div class="content-section-num">결론</div>
+          <div class="content-title">실행 로드맵</div>
+        </div>
+        <div class="content-body">
+          <div class="timeline" style="margin-bottom: 1vh;">
+            <div class="timeline-item">
+              <div class="timeline-dot">Q1</div>
+              <div class="timeline-label">기획/준비</div>
+              <div class="timeline-desc">2주</div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-dot">Q2</div>
+              <div class="timeline-label">MVP 개발</div>
+              <div class="timeline-desc">6주</div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-dot">Q3</div>
+              <div class="timeline-label">AR + 소셜</div>
+              <div class="timeline-desc">3개월</div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-dot">Q4</div>
+              <div class="timeline-label">정식 출시</div>
+              <div class="timeline-desc">마케팅</div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-dot">'27</div>
+              <div class="timeline-label">메타버스</div>
+              <div class="timeline-desc">6개월+</div>
+            </div>
+          </div>
+          <div class="two-column">
+            <div>
+              <h4 style="font-size: 1.1vw; margin-bottom: 0.5vh; color: var(--accent);">📋 MVP 필수 기능</h4>
+              <ul class="feature-list" style="font-size: 0.9vw;">
+                <li><i class="ph-bold ph-check"></i> 사주 분석 + 캐릭터 배정</li>
+                <li><i class="ph-bold ph-check"></i> 일일 운세 + 액션 추천 (Grounding)</li>
+                <li><i class="ph-bold ph-check"></i> 스트릭 시스템</li>
+                <li><i class="ph-bold ph-check"></i> 목표 설정 (1년/1달)</li>
+                <li><i class="ph-bold ph-check"></i> 레벨/XP 시스템</li>
+              </ul>
+            </div>
+            <div>
+              <h4 style="font-size: 1.1vw; margin-bottom: 0.5vh; color: var(--accent);">✅ 기술 준비 상황</h4>
+              <table class="comparison-table" style="font-size: 0.9vw;">
+                <tr><td class="header-col">Gemini + Grounding</td><td>✅ 검증 완료</td></tr>
+                <tr><td class="header-col">만세력 엔진</td><td>✅ 정밀도 확보</td></tr>
+                <tr><td class="header-col">Avatar SDK</td><td>✅ 평가 완료</td></tr>
+                <tr><td class="header-col">AR Foundation</td><td>✅ 프로토타입 가능</td></tr>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 27: 최종 결론 -->
+      <div class="slide slide-cover" data-slide="27">
+        <div class="cover-main" style="text-align: center;">
+          <div style="font-size: 2vw; opacity: 0.9; margin-bottom: 1vh;">🎯 핵심 결론</div>
+          <h1 style="font-size: 3.5vw; margin-bottom: 1.5vh;">운세 + 인생설계 통합 = 블루오션</h1>
+          <h2 style="font-size: 1.5vw; margin-bottom: 2vh;">
+            15개 앱 분석 결과, 이 영역을 완전히 결합한 사례는 <strong>없음</strong>
+          </h2>
+          <div style="display: flex; justify-content: center; gap: 2vw; margin-bottom: 2vh;">
+            <div style="background: rgba(255,255,255,0.15); padding: 1vh 1.5vw; border-radius: 12px;">
+              <div style="font-size: 2vw; margin-bottom: 0.3vh;">🔮</div>
+              <div style="font-size: 1.2vw; font-weight: 700;">WHY</div>
+              <div style="font-size: 0.9vw; opacity: 0.85;">사주가 알려주는<br>방향과 타이밍</div>
+            </div>
+            <div style="background: rgba(255,255,255,0.15); padding: 1vh 1.5vw; border-radius: 12px;">
+              <div style="font-size: 2vw; margin-bottom: 0.3vh;">📋</div>
+              <div style="font-size: 1.2vw; font-weight: 700;">WHAT</div>
+              <div style="font-size: 0.9vw; opacity: 0.85;">AI가 만들어주는<br>구체적 목표와 액션</div>
+            </div>
+            <div style="background: rgba(255,255,255,0.15); padding: 1vh 1.5vw; border-radius: 12px;">
+              <div style="font-size: 2vw; margin-bottom: 0.3vh;">🎮</div>
+              <div style="font-size: 1.2vw; font-weight: 700;">FUN</div>
+              <div style="font-size: 0.9vw; opacity: 0.85;">게임처럼 재미있게<br>인생을 설계</div>
+            </div>
+          </div>
+          <div style="background: var(--gold); color: #1a1a1a; padding: 1vh 2vw; border-radius: 12px; display: inline-block;">
+            <div style="font-size: 1.5vw; font-weight: 800;">"당신의 사주가 알려주는 인생 설계 게임"</div>
+          </div>
+        </div>
+        <div class="cover-bottom">
+          <div class="cover-meta">실시간 Grounding × 메타버스 × 게이미피케이션</div>
+          <div class="cover-meta" style="text-align: right;">경쟁자가 쉽게 따라올 수 없는 독점적 포지션</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="nav-hint">← → 방향키로 이동</div>
+  <div class="slide-counter" id="slideCounter">1 / 28</div>
+
+  <script>
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.slide');
+    const totalSlides = slides.length;
+    const counter = document.getElementById('slideCounter');
+
+    function showSlide(n) {
+      slides[currentSlide].classList.remove('active');
+      currentSlide = (n + totalSlides) % totalSlides;
+      slides[currentSlide].classList.add('active');
+      counter.textContent = `${currentSlide + 1} / ${totalSlides}`;
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight' || e.key === ' ') {
+        e.preventDefault();
+        showSlide(currentSlide + 1);
+      } else if (e.key === 'ArrowLeft') {
+        showSlide(currentSlide - 1);
+      }
+    });
+
+    let touchStartX = 0;
+    document.addEventListener('touchstart', (e) => { touchStartX = e.touches[0].clientX; });
+    document.addEventListener('touchend', (e) => {
+      const diff = touchStartX - e.changedTouches[0].clientX;
+      if (Math.abs(diff) > 50) showSlide(currentSlide + (diff > 0 ? 1 : -1));
+    });
+
+    document.querySelector('.slides-container').addEventListener('click', (e) => {
+      const rect = e.currentTarget.getBoundingClientRect();
+      showSlide(currentSlide + (e.clientX - rect.left > rect.width / 2 ? 1 : -1));
+    });
+  </script>
+</body>
+</html>
