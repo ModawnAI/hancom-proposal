@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { ArrowLeft, ArrowRight, Monitor, Eye } from "@phosphor-icons/react";
 
 // Section data with narrative-driven scripts - each explains WHY
@@ -269,83 +269,15 @@ DITTO의 비전은 명확합니다.
   }
 ];
 
-// Parse script formatting: **bold**, / pause, (stage direction)
-function parseScript(script: string) {
-  const lines = script.split('\n');
-  
-  return lines.map((line, lineIndex) => {
-    if (line.trim() === '') {
-      return <div key={lineIndex} className="h-4" />;
-    }
-    
-    // Split by formatting markers
-    const parts: React.ReactNode[] = [];
-    let remaining = line;
-    let partIndex = 0;
-    
-    while (remaining.length > 0) {
-      // Check for stage direction (text in parentheses at start or standalone)
-      const stageMatch = remaining.match(/^\(([^)]+)\)/);
-      if (stageMatch) {
-        parts.push(
-          <span key={partIndex++} className="text-amber-400/70 italic text-base mr-2">
-            [{stageMatch[1]}]
-          </span>
-        );
-        remaining = remaining.slice(stageMatch[0].length);
-        continue;
-      }
-      
-      // Check for bold **text**
-      const boldMatch = remaining.match(/\*\*([^*]+)\*\*/);
-      if (boldMatch) {
-        const beforeBold = remaining.slice(0, boldMatch.index);
-        if (beforeBold) {
-          // Process pauses in beforeBold
-          parts.push(...parsePauses(beforeBold, partIndex));
-          partIndex += beforeBold.split('/').length;
-        }
-        parts.push(
-          <span key={partIndex++} className="text-amber-300 font-bold">
-            {boldMatch[1]}
-          </span>
-        );
-        remaining = remaining.slice((boldMatch.index || 0) + boldMatch[0].length);
-        continue;
-      }
-      
-      // No more special formatting, process remaining with pauses
-      parts.push(...parsePauses(remaining, partIndex));
-      break;
-    }
-    
-    return (
-      <div key={lineIndex} className="mb-3">
-        {parts}
-      </div>
-    );
-  });
-}
-
-// Parse pause markers (/)
-function parsePauses(text: string, startIndex: number): React.ReactNode[] {
-  const parts: React.ReactNode[] = [];
-  const segments = text.split(' / ');
-  
-  segments.forEach((segment, i) => {
-    if (segment.trim()) {
-      parts.push(<span key={startIndex + i * 2}>{segment}</span>);
-    }
-    if (i < segments.length - 1) {
-      parts.push(
-        <span key={startIndex + i * 2 + 1} className="mx-2 text-neutral-600 select-none">
-          •
-        </span>
-      );
-    }
-  });
-  
-  return parts;
+// Parse script formatting and return HTML string
+function formatScript(script: string): string {
+  return script
+    // Stage directions: (text) → [text] in amber italic
+    .replace(/\(([^)]+)\)/g, '<span class="text-amber-400/70 italic text-base">[$1]</span>')
+    // Bold: **text** → yellow bold
+    .replace(/\*\*([^*]+)\*\*/g, '<span class="text-amber-300 font-semibold">$1</span>')
+    // Pause: / → bullet marker
+    .replace(/ \/ /g, ' <span class="text-neutral-500 mx-1">•</span> ');
 }
 
 export default function PresenterPage() {
@@ -483,9 +415,10 @@ export default function PresenterPage() {
               </span>
             </div>
           </div>
-          <div className="text-xl leading-relaxed font-light">
-            {parseScript(currentSection.script)}
-          </div>
+          <div 
+            className="text-xl leading-loose font-light whitespace-pre-line"
+            dangerouslySetInnerHTML={{ __html: formatScript(currentSection.script) }}
+          />
         </div>
 
         {/* Section thumbnails */}
