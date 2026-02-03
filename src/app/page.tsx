@@ -876,7 +876,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Technologies Section - Part 1 */}
+      {/* Technologies Section - Combined */}
       <section id="technologies" className="min-h-screen py-16 px-6 border-t border-neutral-200 flex items-center">
         <div className="max-w-6xl mx-auto w-full">
           <div className="mb-12">
@@ -888,43 +888,19 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-8">
-            {technologies.slice(0, 4).map((tech, index) => (
-              <TechCard key={tech.title} number={index + 1} {...tech} />
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Technologies Section - Part 2 */}
-      <section id="technologies-2" className="min-h-screen py-16 px-6 border-t border-neutral-200 flex items-center">
-        <div className="max-w-6xl mx-auto w-full">
-          <div className="mb-12">
-            <h2 className="text-headline mb-6">
-              10대 DITTO 기술 (계속)
-            </h2>
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-8">
-            {technologies.slice(4, 8).map((tech, index) => (
-              <TechCard key={tech.title} number={index + 5} {...tech} />
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Technologies Section - Part 3 */}
-      <section id="technologies-3" className="min-h-screen py-16 px-6 border-t border-neutral-200 flex items-center">
-        <div className="max-w-6xl mx-auto w-full">
-          <div className="mb-12">
-            <h2 className="text-headline mb-6">
-              10대 DITTO 기술 (계속)
-            </h2>
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-8">
-            {technologies.slice(8, 10).map((tech, index) => (
-              <TechCard key={tech.title} number={index + 9} {...tech} />
+          <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-4">
+            {technologies.map((tech, index) => (
+              <div key={tech.title} className={`p-5 rounded-xl border ${index === 0 ? 'bg-black text-white border-black' : 'bg-white border-neutral-200 hover:border-black'} transition-colors`}>
+                <div className={`mb-3 ${index === 0 ? 'text-white' : ''}`}>
+                  {tech.icon}
+                </div>
+                <div className={`text-xs font-medium mb-1 ${index === 0 ? 'text-neutral-400' : 'text-neutral-500'}`}>
+                  {String(index + 1).padStart(2, '0')}
+                </div>
+                <h4 className="text-sm font-bold leading-tight">
+                  {tech.title}
+                </h4>
+              </div>
             ))}
           </div>
         </div>
