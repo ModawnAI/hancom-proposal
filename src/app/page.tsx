@@ -855,29 +855,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Patents Section */}
-      <section id="patents" className="min-h-screen py-16 px-6 border-t border-neutral-200 bg-neutral-50 flex items-center">
-        <div className="max-w-6xl mx-auto w-full">
-          <div className="mb-16">
-            <h2 className="text-headline mb-6">
-              검증된 DITTO 기술
-            </h2>
-            <p className="text-body-large text-neutral-600 max-w-3xl">
-              글로벌 AI/메타버스 시장에서 검증된 10가지 핵심 기술.
-              DITTO는 이 기술들을 운세/인생설계 도메인에 최적화하여 적용합니다.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
-            {dittoTech.map((tech) => (
-              <PatentCard key={tech.number} {...tech} />
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* Technologies Section - Combined */}
-      <section id="technologies" className="min-h-screen py-16 px-6 border-t border-neutral-200 flex items-center">
+      <section id="technologies" className="min-h-screen py-16 px-6 border-t border-neutral-200 bg-neutral-50 flex items-center">
         <div className="max-w-6xl mx-auto w-full">
           <div className="mb-12">
             <h2 className="text-headline mb-6">
@@ -906,6 +885,27 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Patents Section */}
+      <section id="patents" className="min-h-screen py-16 px-6 border-t border-neutral-200 flex items-center">
+        <div className="max-w-6xl mx-auto w-full">
+          <div className="mb-16">
+            <h2 className="text-headline mb-6">
+              검증된 DITTO 기술
+            </h2>
+            <p className="text-body-large text-neutral-600 max-w-3xl">
+              글로벌 AI/메타버스 시장에서 검증된 10가지 핵심 기술.
+              DITTO는 이 기술들을 운세/인생설계 도메인에 최적화하여 적용합니다.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+            {dittoTech.map((tech) => (
+              <PatentCard key={tech.number} {...tech} />
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Roadmap Section */}
       <section id="roadmap" className="min-h-screen py-16 px-6 border-t border-neutral-200 bg-neutral-50 flex items-center">
         <div className="max-w-6xl mx-auto w-full">
@@ -921,11 +921,11 @@ export default function Home() {
 
           {/* 상단 3개 카드 */}
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-6">
-            {/* 1-2월 */}
+            {/* 2월 */}
             <div className="bg-white border border-neutral-200 rounded-xl p-6 hover:border-black transition-colors">
               <div className="flex items-center gap-4 mb-6">
                 <div className="w-14 h-14 rounded-full bg-black text-white flex items-center justify-center font-bold text-lg">
-                  1-2월
+                  2월
                 </div>
                 <div>
                   <h3 className="text-2xl font-bold">MVP 개발</h3>
@@ -966,10 +966,6 @@ export default function Home() {
               <ul className="space-y-3 text-base">
                 <li className="flex items-start gap-2">
                   <ArrowRight size={16} className="flex-shrink-0 mt-0.5" />
-                  모바일 앱 출시
-                </li>
-                <li className="flex items-start gap-2">
-                  <ArrowRight size={16} className="flex-shrink-0 mt-0.5" />
                   웹 버전 공개
                 </li>
                 <li className="flex items-start gap-2">
@@ -979,6 +975,10 @@ export default function Home() {
                 <li className="flex items-start gap-2">
                   <ArrowRight size={16} className="flex-shrink-0 mt-0.5" />
                   사용자 피드백 수집
+                </li>
+                <li className="flex items-start gap-2">
+                  <ArrowRight size={16} className="flex-shrink-0 mt-0.5" />
+                  서비스 안정화
                 </li>
               </ul>
             </div>
@@ -997,6 +997,10 @@ export default function Home() {
               <ul className="space-y-3 text-base">
                 <li className="flex items-start gap-2">
                   <ArrowRight size={16} className="flex-shrink-0 mt-0.5" />
+                  모바일 앱 출시
+                </li>
+                <li className="flex items-start gap-2">
+                  <ArrowRight size={16} className="flex-shrink-0 mt-0.5" />
                   커뮤니티 기능
                 </li>
                 <li className="flex items-start gap-2">
@@ -1006,10 +1010,6 @@ export default function Home() {
                 <li className="flex items-start gap-2">
                   <ArrowRight size={16} className="flex-shrink-0 mt-0.5" />
                   피드백 반영
-                </li>
-                <li className="flex items-start gap-2">
-                  <ArrowRight size={16} className="flex-shrink-0 mt-0.5" />
-                  안정화 및 최적화
                 </li>
               </ul>
             </div>
@@ -1130,6 +1130,78 @@ export default function Home() {
               "운세를 읽는 것에서
               <br />
               사는 것으로"
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Metaverse Insight Section 2 - DITTO's Preparation */}
+      <section id="metaverse-insight-2" className="min-h-screen py-16 px-6 border-t border-neutral-200 bg-white flex items-center">
+        <div className="max-w-6xl mx-auto w-full">
+          <div className="mb-12">
+            <p className="text-base font-medium text-neutral-500 mb-4 tracking-widest">INSIGHT</p>
+            <h2 className="text-headline mb-6">
+              DITTO의 준비
+            </h2>
+          </div>
+
+          {/* DITTO's Preparation - 3 columns */}
+          <div className="grid md:grid-cols-3 gap-8 mb-16">
+            <div className="bg-neutral-100 rounded-2xl p-8 border border-neutral-200">
+              <div className="text-4xl mb-4">📱 → 🥽</div>
+              <h4 className="text-2xl font-bold mb-4">단계적 전환 설계</h4>
+              <p className="text-lg text-neutral-600 leading-relaxed">
+                웹 → 모바일 → AR → 메타버스로 <strong>자연스러운 사용자 경험 전환 경로</strong>를 설계합니다.
+              </p>
+            </div>
+            <div className="bg-neutral-100 rounded-2xl p-8 border border-neutral-200">
+              <div className="text-4xl mb-4">🧬</div>
+              <h4 className="text-2xl font-bold mb-4">3D 아바타 시스템</h4>
+              <p className="text-lg text-neutral-600 leading-relaxed">
+                사주 기반 <strong>디지털 DNA 아바타</strong>를 메타버스 환경에 즉시 적용 가능하도록 준비합니다.
+              </p>
+            </div>
+            <div className="bg-neutral-100 rounded-2xl p-8 border border-neutral-200">
+              <div className="text-4xl mb-4">🏛️</div>
+              <h4 className="text-2xl font-bold mb-4">운세 라운지</h4>
+              <p className="text-lg text-neutral-600 leading-relaxed">
+                같은 운명을 공유하는 사람들의 <strong>"운세 라운지"</strong>를 가상 공간으로 확장합니다.
+              </p>
+            </div>
+          </div>
+
+          {/* Industry Fusion */}
+          <div className="mb-16">
+            <h3 className="text-3xl font-bold mb-8">메타버스 시대의 산업 융합</h3>
+            <div className="grid md:grid-cols-5 gap-6">
+              <div className="text-center p-8 bg-neutral-50 rounded-2xl border border-neutral-200">
+                <p className="text-2xl font-bold mb-3">교육</p>
+                <p className="text-base text-neutral-500">진로 탐색<br/>적성 교육</p>
+              </div>
+              <div className="text-center p-8 bg-neutral-50 rounded-2xl border border-neutral-200">
+                <p className="text-2xl font-bold mb-3">헬스케어</p>
+                <p className="text-base text-neutral-500">정신건강<br/>웰빙 코칭</p>
+              </div>
+              <div className="text-center p-8 bg-neutral-50 rounded-2xl border border-neutral-200">
+                <p className="text-2xl font-bold mb-3">엔터테인먼트</p>
+                <p className="text-base text-neutral-500">스토리 게임<br/>인터랙티브</p>
+              </div>
+              <div className="text-center p-8 bg-neutral-50 rounded-2xl border border-neutral-200">
+                <p className="text-2xl font-bold mb-3">커머스</p>
+                <p className="text-base text-neutral-500">맞춤 추천<br/>가상 굿즈</p>
+              </div>
+              <div className="text-center p-8 bg-neutral-50 rounded-2xl border border-neutral-200">
+                <p className="text-2xl font-bold mb-3">HR/채용</p>
+                <p className="text-base text-neutral-500">팀 궁합<br/>조직 컨설팅</p>
+              </div>
+            </div>
+          </div>
+
+          {/* Vision Statement */}
+          <div className="text-center py-12 border-4 border-black rounded-3xl">
+            <p className="text-4xl font-bold leading-relaxed">
+              "메타버스 시대의 첫 번째<br/>
+              <span className="text-5xl">운세/인생설계 플랫폼</span>"
             </p>
           </div>
         </div>
@@ -1266,78 +1338,6 @@ export default function Home() {
                 </p>
               </div>
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Metaverse Insight Section 2 - DITTO's Preparation */}
-      <section id="metaverse-insight-2" className="min-h-screen py-16 px-6 border-t border-neutral-200 bg-white flex items-center">
-        <div className="max-w-6xl mx-auto w-full">
-          <div className="mb-12">
-            <p className="text-base font-medium text-neutral-500 mb-4 tracking-widest">INSIGHT</p>
-            <h2 className="text-headline mb-6">
-              DITTO의 준비
-            </h2>
-          </div>
-
-          {/* DITTO's Preparation - 3 columns */}
-          <div className="grid md:grid-cols-3 gap-8 mb-16">
-            <div className="bg-neutral-100 rounded-2xl p-8 border border-neutral-200">
-              <div className="text-4xl mb-4">📱 → 🥽</div>
-              <h4 className="text-2xl font-bold mb-4">단계적 전환 설계</h4>
-              <p className="text-lg text-neutral-600 leading-relaxed">
-                모바일 → 웹 → AR → 메타버스로 <strong>자연스러운 사용자 경험 전환 경로</strong>를 설계합니다.
-              </p>
-            </div>
-            <div className="bg-neutral-100 rounded-2xl p-8 border border-neutral-200">
-              <div className="text-4xl mb-4">🧬</div>
-              <h4 className="text-2xl font-bold mb-4">3D 아바타 시스템</h4>
-              <p className="text-lg text-neutral-600 leading-relaxed">
-                사주 기반 <strong>디지털 DNA 아바타</strong>를 메타버스 환경에 즉시 적용 가능하도록 준비합니다.
-              </p>
-            </div>
-            <div className="bg-neutral-100 rounded-2xl p-8 border border-neutral-200">
-              <div className="text-4xl mb-4">🏛️</div>
-              <h4 className="text-2xl font-bold mb-4">운세 라운지</h4>
-              <p className="text-lg text-neutral-600 leading-relaxed">
-                같은 운명을 공유하는 사람들의 <strong>"운세 라운지"</strong>를 가상 공간으로 확장합니다.
-              </p>
-            </div>
-          </div>
-
-          {/* Industry Fusion */}
-          <div className="mb-16">
-            <h3 className="text-3xl font-bold mb-8">메타버스 시대의 산업 융합</h3>
-            <div className="grid md:grid-cols-5 gap-6">
-              <div className="text-center p-8 bg-neutral-50 rounded-2xl border border-neutral-200">
-                <p className="text-2xl font-bold mb-3">교육</p>
-                <p className="text-base text-neutral-500">진로 탐색<br/>적성 교육</p>
-              </div>
-              <div className="text-center p-8 bg-neutral-50 rounded-2xl border border-neutral-200">
-                <p className="text-2xl font-bold mb-3">헬스케어</p>
-                <p className="text-base text-neutral-500">정신건강<br/>웰빙 코칭</p>
-              </div>
-              <div className="text-center p-8 bg-neutral-50 rounded-2xl border border-neutral-200">
-                <p className="text-2xl font-bold mb-3">엔터테인먼트</p>
-                <p className="text-base text-neutral-500">스토리 게임<br/>인터랙티브</p>
-              </div>
-              <div className="text-center p-8 bg-neutral-50 rounded-2xl border border-neutral-200">
-                <p className="text-2xl font-bold mb-3">커머스</p>
-                <p className="text-base text-neutral-500">맞춤 추천<br/>가상 굿즈</p>
-              </div>
-              <div className="text-center p-8 bg-neutral-50 rounded-2xl border border-neutral-200">
-                <p className="text-2xl font-bold mb-3">HR/채용</p>
-                <p className="text-base text-neutral-500">팀 궁합<br/>조직 컨설팅</p>
-              </div>
-            </div>
-          </div>
-
-          {/* Vision Statement */}
-          <div className="text-center py-12 border-4 border-black rounded-3xl">
-            <p className="text-4xl font-bold leading-relaxed">
-              "메타버스 시대의 첫 번째<br/>
-              <span className="text-5xl">운세/인생설계 플랫폼</span>"
-            </p>
           </div>
         </div>
       </section>

@@ -83,9 +83,9 @@ export function RoadmapDiagram() {
       {/* Timeline */}
       <line x1="30" y1="40" x2="870" y2="40" className="stroke-current opacity-30" strokeWidth="2" />
 
-      {/* 1-2월 */}
+      {/* 2월 */}
       <circle cx="80" cy="40" r="20" className="stroke-current fill-current" strokeWidth="2" />
-      <text x="80" y="45" textAnchor="middle" className="fill-white text-xs font-bold">1-2월</text>
+      <text x="80" y="45" textAnchor="middle" className="fill-white text-xs font-bold">2월</text>
       <text x="80" y="85" textAnchor="middle" className="fill-current text-sm font-medium">MVP 개발</text>
 
       {/* Arrow 1 */}
