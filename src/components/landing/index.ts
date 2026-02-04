@@ -1,0 +1,9 @@
+export { Hero } from "./Hero";
+export { Problem } from "./Problem";
+export { Solution } from "./Solution";
+export { Features } from "./Features";
+export { DailyExperience } from "./DailyExperience";
+export { MarketValidation } from "./MarketValidation";
+export { Technology } from "./Technology";
+export { CTASection } from "./CTASection";
+export { Footer } from "./Footer";
