@@ -83,22 +83,22 @@ function BrandCard({ brand }: { brand: (typeof brands)[0] }) {
 
   return (
     <div
-      className="border rounded-xl p-3 flex flex-col items-center text-center transition-all hover:shadow-lg"
+      className="border rounded-xl p-4 sm:p-3 flex flex-col items-center text-center transition-all hover:shadow-lg"
       style={{ borderColor: brand.color + "30" }}
     >
       {/* Logo display */}
-      <div className="flex-1 flex items-center justify-center w-full mb-2 relative min-h-[140px]">
+      <div className="flex-1 flex items-center justify-center w-full mb-3 sm:mb-2 relative min-h-[160px] sm:min-h-[140px]">
         <Image
           src={`/image/${brand.files[activeIdx]}`}
           alt={`${brand.name} ${brand.labels[activeIdx]}`}
           width={180}
           height={180}
-          className="object-contain max-h-[140px]"
+          className="object-contain max-h-[160px] sm:max-h-[140px]"
         />
       </div>
 
       {/* Variant selector dots */}
-      <div className="flex gap-1.5 mb-2">
+      <div className="flex gap-2 sm:gap-1.5 mb-3 sm:mb-2">
         {brand.files.map((_, idx) => (
           <button
             key={idx}
@@ -106,7 +106,7 @@ function BrandCard({ brand }: { brand: (typeof brands)[0] }) {
             className="relative group"
           >
             <div
-              className="w-7 h-7 rounded-full border-2 flex items-center justify-center text-[10px] font-bold transition-all cursor-pointer"
+              className="w-9 h-9 sm:w-7 sm:h-7 rounded-full border-2 flex items-center justify-center text-xs sm:text-[10px] font-bold transition-all cursor-pointer"
               style={{
                 borderColor: activeIdx === idx ? brand.color : "#d1d5db",
                 backgroundColor: activeIdx === idx ? brand.color : "transparent",
@@ -123,11 +123,11 @@ function BrandCard({ brand }: { brand: (typeof brands)[0] }) {
       </div>
 
       {/* Brand info */}
-      <h2 className="text-lg font-bold" style={{ color: brand.color }}>
+      <h2 className="text-xl sm:text-lg font-bold" style={{ color: brand.color }}>
         {brand.name}
       </h2>
-      <span className="text-xs text-neutral-400 mb-1">{brand.nameKr}</span>
-      <p className="text-neutral-600 text-[11px] leading-snug line-clamp-2">
+      <span className="text-sm sm:text-xs text-neutral-400 mb-1">{brand.nameKr}</span>
+      <p className="text-neutral-600 text-xs sm:text-[11px] leading-snug line-clamp-2">
         {brand.meaning}
       </p>
     </div>
@@ -136,16 +136,16 @@ function BrandCard({ brand }: { brand: (typeof brands)[0] }) {
 
 export default function LogoPage() {
   return (
-    <main className="h-screen bg-white p-6 overflow-hidden">
-      <div className="h-full max-w-[1800px] mx-auto flex flex-col">
-        <div className="flex items-center justify-between mb-4">
+    <main className="min-h-screen bg-white px-4 py-6 sm:p-6 overflow-auto">
+      <div className="max-w-[1800px] mx-auto flex flex-col">
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-4 gap-2">
           <div>
-            <h1 className="text-3xl font-bold">AI Engine Brand Collection</h1>
-            <p className="text-sm text-neutral-400 mt-1">
+            <h1 className="text-2xl sm:text-3xl font-bold">AI Engine Brand Collection</h1>
+            <p className="text-xs sm:text-sm text-neutral-400 mt-1">
               그리스 신화 기반 AI 엔진 브랜드 심볼 · 각 브랜드 3가지 변형
             </p>
           </div>
-          <div className="flex items-center gap-2 text-sm text-neutral-500">
+          <div className="flex items-center gap-2 text-xs sm:text-sm text-neutral-500">
             <span className="inline-flex items-center gap-1">
               <span className="w-5 h-5 rounded-full border-2 border-neutral-400 flex items-center justify-center text-[9px] font-bold text-neutral-400">1</span>
               <span className="w-5 h-5 rounded-full border-2 border-neutral-400 flex items-center justify-center text-[9px] font-bold text-neutral-400">2</span>
@@ -155,7 +155,7 @@ export default function LogoPage() {
           </div>
         </div>
 
-        <div className="flex-1 grid grid-cols-3 grid-rows-3 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {brands.map((brand) => (
             <BrandCard key={brand.name} brand={brand} />
           ))}
