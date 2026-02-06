@@ -205,6 +205,24 @@ const brands = [
     files: ["anubis-text.png", "anubis-symbol.png"],
     labels: ["텍스트", "심볼"],
   },
+  {
+    name: "Osiris",
+    nameKr: "오시리스",
+    color: "#2E4A3A",
+    mythology: "이집트",
+    meaning: "부활과 재생의 신 — 데이터 복구·버전 관리·백업 시스템 AI",
+    files: ["osiris-text.png", "osiris-symbol.png"],
+    labels: ["텍스트", "심볼"],
+  },
+  {
+    name: "Set",
+    nameKr: "세트",
+    color: "#8B1A1A",
+    mythology: "이집트",
+    meaning: "혼돈과 폭풍의 신 — 보안 침투 테스트·레드팀·취약점 탐지 AI",
+    files: ["set-text.png", "set-symbol.png"],
+    labels: ["텍스트", "심볼"],
+  },
   // === Hindu Mythology ===
   {
     name: "Indra",
@@ -231,25 +249,6 @@ const brands = [
     mythology: "힌두",
     meaning: "포효하는 폭풍의 신 — 파괴적 혁신·기존 질서 변혁 AI",
     files: ["rudra-text.png", "rudra-symbol.png"],
-    labels: ["텍스트", "심볼"],
-  },
-  // === Japanese Mythology ===
-  {
-    name: "Raijin",
-    nameKr: "라이진",
-    color: "#F39C12",
-    mythology: "일본",
-    meaning: "북을 치며 천둥을 일으키는 뇌신 — 고속 처리·컴퓨팅 파워 AI",
-    files: ["raijin-text.png", "raijin-symbol.png"],
-    labels: ["텍스트", "심볼"],
-  },
-  {
-    name: "Susanoo",
-    nameKr: "스사노오",
-    color: "#2980B9",
-    mythology: "일본",
-    meaning: "팔기대사를 퇴치한 폭풍의 영웅 — 다중 문제 동시 해결 AI",
-    files: ["susanoo-text.png", "susanoo-symbol.png"],
     labels: ["텍스트", "심볼"],
   },
   // === Celtic Mythology ===
@@ -289,7 +288,6 @@ const mythologyGroups = [
   { label: "북유럽 신화", key: "북유럽" },
   { label: "이집트 신화", key: "이집트" },
   { label: "힌두 신화", key: "힌두" },
-  { label: "일본 신화", key: "일본" },
   { label: "켈트 신화", key: "켈트" },
   { label: "메소포타미아 신화", key: "메소포타미아" },
 ];
